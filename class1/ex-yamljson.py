@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import unicode_literals, print_function
 import json
 import yaml
 from pprint import pprint
