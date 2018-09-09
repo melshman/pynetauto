@@ -1,0 +1,10 @@
+- cisco
+- juniper
+- users:
+    password: password123
+    username: john
+- nexus
+- vlans:
+    vlan_id: '22'
+    vlan_name: vlan22
+- HP

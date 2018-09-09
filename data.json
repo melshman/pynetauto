@@ -1,0 +1,1 @@
+["cisco", "juniper", {"users": {"username": "john", "password": "password123"}}, "nexus", {"vlans": {"vlan_name": "vlan22", "vlan_id": "22"}}, "HP"]
