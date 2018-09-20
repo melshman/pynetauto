@@ -100,11 +100,9 @@ def save_objects_to_file(file_name, data_dict):
 
 def send_notification(device_name):
     """Send email notification regarding modified device."""
-
+    sender = 'tim.armstrong@vt-group.com'
+    recipient = 'melshman@gmail.com'
     current_time = datetime.now()
-
-    sender = 'sender@twb-tech.com'
-    recipient = 'recipient@twb-tech.com'
     subject = 'Device {} was modified'.format(device_name)
     message = '''
 The running configuration of {} was modified.
@@ -177,8 +175,8 @@ def main():
     run_last_changed = '1.3.6.1.4.1.9.9.43.1.1.1.0'
 
     # File for storing previous RunningLastChanged timestamp
-    net_dev_file = 'netdev.pkl'
-    # net_dev_file = 'netdev.yml'
+    #net_dev_file = 'netdev.pkl'
+    net_dev_file = 'netdev.yml'
     # net_dev_file = 'netdev.json'
 
     try:

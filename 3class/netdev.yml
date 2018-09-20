@@ -1,0 +1,8 @@
+pynet-rtr1.twb-tech.com: !!python/object/new:__main__.NetworkDevice
+- 292551
+- 0
+- false
+pynet-rtr2.twb-tech.com: !!python/object/new:__main__.NetworkDevice
+- 215262183
+- 215257118
+- true
