@@ -103,6 +103,12 @@ def send_notification(device_name):
     sender = 'tim.armstrong@vt-group.com'
     recipient = 'melshman@gmail.com'
     current_time = datetime.now()
+<<<<<<< HEAD
+=======
+
+    sender = 'tim.armstrong@vt-group.com'
+    recipient = 'melshman@gmail.com'
+>>>>>>> 10de3dc37d6bb241c069507db18ae768f2cfcea3
     subject = 'Device {} was modified'.format(device_name)
     message = '''
 The running configuration of {} was modified.
@@ -175,9 +181,15 @@ def main():
     run_last_changed = '1.3.6.1.4.1.9.9.43.1.1.1.0'
 
     # File for storing previous RunningLastChanged timestamp
+<<<<<<< HEAD
     #net_dev_file = 'netdev.pkl'
     net_dev_file = 'netdev.yml'
     # net_dev_file = 'netdev.json'
+=======
+    # net_dev_file = 'netdev.pkl'
+    # net_dev_file = 'netdev.yml'
+    net_dev_file = 'netdev.json'
+>>>>>>> 10de3dc37d6bb241c069507db18ae768f2cfcea3
 
     try:
         rtr1_ip_addr = raw_input("Enter pynet-rtr1 IP: ")
