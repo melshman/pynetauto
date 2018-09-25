@@ -2,7 +2,8 @@
 from netmiko import Netmiko
 from getpass import getpass
 
-pub_key = "/home/melshman/.ssh/id_rsa.pub"
+pub_key = "/home/tarmstrong/.ssh/test_sshkey.pub"
+# pub_key = "/home/melshman/.ssh/id_rsa.pub"
 # password = getpass()
 
 VTswitch = {
