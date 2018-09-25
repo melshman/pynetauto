@@ -3,6 +3,7 @@ from netmiko import Netmiko
 from getpass import getpass
 
 pub_key = "/home/melshman/.ssh/id_rsa.pub"
+# password = getpass()
 
 VTswitch = {
     'device_type': 'cisco_ios',
@@ -12,7 +13,19 @@ VTswitch = {
     'key_file': pub_key,
 }
 
-net_connect = Netmiko(**VTswitch)
+pynet_rtr1  = {
+    'device_type': 'cisco_ios',
+    'host': '184.105.247.70', 
+    'username': 'pyclass',
+    'use_keys': True,
+    'key_file': pub_key,
+    # 'password' = password
+}
+
+
+# net_connect = Netmiko(**VTswitch)
+
+net_connect = Netmiko(**pynet_rtr1)
 print(net_connect.find_prompt())
 output = net_connect.send_command("show version")
 print(output)
