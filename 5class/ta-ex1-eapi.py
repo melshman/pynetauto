@@ -31,7 +31,7 @@ def main():
     ints = r_ints[0]['result']['interfaces'] 
 
 
-    tshoot(r_ints, ints)
+    tshoot_ints(r_ints, ints)
 
     for int, value in ints.items():
         # if ints.get(int)
