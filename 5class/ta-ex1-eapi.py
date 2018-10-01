@@ -35,7 +35,7 @@ def main():
 
     for int, value in ints.items():
         # if ints.get(int)
-        if value.get(int)
+        if value.get(int):
             pprint("starting interface: {}".format(int))
             int_counters = value.get('interfaceCounters', {})
             inOct  = int_counters.get('inOctets')
