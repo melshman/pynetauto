@@ -14,7 +14,7 @@ def tshoot_ints(r_ints, ints):
     # example with Ethernet2
     inOct = r_ints[0]['result']['interfaces']['Ethernet2']['interfaceCounters']['inOctets']
     outOct = r_ints[0]['result']['interfaces']['Ethernet2']['interfaceCounters']['outOctets']
-    print("inOct = {} and outOct = {}".format(inOct, outOct)
+    print("inOct = {} and outOct = {}".format(inOct, outOct))
     # pprint(r_ints)
 
 
@@ -31,7 +31,7 @@ def main():
     ints = r_ints[0]['result']['interfaces'] 
 
 
-    # tshoot(r_ints, ints)
+    tshoot(r_ints, ints)
 
     for int, value in ints.items():
         # if ints.get(int)
