@@ -43,7 +43,8 @@ def main():
         # int_value1 = value.get(int)
         # int_value2 = ints.get(int)
         print("value.get(int) = {} and ints.get(int) = {}".format(int_value1, int_value2))
-        print("ints.get(name) = {}".format(ints.get("name"))
+        print("ints.get(name) = {}".format(ints.get('name'))
+
         if value.get(int):
             pprint("starting interface: {}".format(int))
             int_counters = value.get('interfaceCounters', {})
