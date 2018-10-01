@@ -6,14 +6,15 @@ from pprint import pprint
 
 def tshoot_ints(r_ints, ints):
 # TSHOOT INDIVIDUAL INT
-    print("/n")
+    print("BEGIN --- TSHOOT SECTION ---  /n")
     pprint(ints)
-    print("/n")
+    print("\n")
     inOct = r_ints[0]['result']['interfaces']['Ethernet2']['interfaceCounters']['inOctets']
     outOct = r_ints[0]['result']['interfaces']['Ethernet2']['interfaceCounters']['outOctets']
-    print("/n")
+    print("\n")
     print("Interface {}: inOctet = {} AND outOctets = {}".format('Ethernet2', inOct, outOct))
-    print("/n")
+    print("\n")
+    print("END --- TSHOOT SECTION ---  \n")
     # example with Ethernet2
 
     # print("inOct = {} and outOct = {}".format(inOct, outOct))
@@ -37,6 +38,10 @@ def main():
 
     for int, value in ints.items():
         # if ints.get(int)
+        int_value1 = value.get(int)
+        int_value2 = ints.get(int)
+        print("value.get(int) = {} and ints.get(int) = {}".format(int_value1, int_value2))
+        
         if value.get(int):
             pprint("starting interface: {}".format(int))
             int_counters = value.get('interfaceCounters', {})
