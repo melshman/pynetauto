@@ -66,13 +66,17 @@ def main():
 
     vlan_list = vlans.getall()
     vlan_ids = list(vlan_list.keys())
+    print("\n")
     print("The following VLANs currently exist on the switch:  {}".format(vlan_ids))
+    print("\n")
     if len(args_list)>2:
         cmd_func = args_list[1] # either --name or --remove
         print("The command function is identified as {}".format(cmd_func))
         print("Length of the args_list is {}".format(len(args_list)))
+        print("\n")
     else:
         print("Invalid parameters for this script, must include arguments!")
+        print("\n")
         cmd_func = ""
     recognized_funcs = ["--name", "--remove"]
 
@@ -81,9 +85,11 @@ def main():
     # if cmd_func not in ["--name", "--remove"]:  # valid function not provided
     if cmd_func not in recognized_funcs:  # valid function not provided
         print("A recognized function was not provided in command line arguments")
+        print("\n")
     elif cmd_func == "--name": # add vlan operation called
         if len(args_list) != 4:
             print ("--name function detected, but invalid arguments passed to script.  Boycott in effect!")
+            print("\n")
         elif args_list[3] not in vlan_ids:
             vid = args_list[3]
             vname = args_list[2]
@@ -92,9 +98,11 @@ def main():
             print("vlan added!  ID: {} , Name: {}".format(vid, vname))
         else: 
             print("VLAN ID {} already exists on this switch!".format(args_list[3]))
+            print("\n")
     elif cmd_func == "--remove": # remove vlan operation
         if len(args_list) < 3:
             print ("--remove function detected, but invalid arguments passed to script.  Boycott in effect!")
+            print("\n")
         args_list.pop(0)
         args_list.pop(0)
             # print(args_list)
@@ -104,6 +112,7 @@ def main():
                 print("removed vlan id {}".format(arg))
             else:
                 print("VLAN {} does not exist and thus can't be removed!".format(arg)) 
+                print("\n")    
     vlan_list = vlans.getall()
     vlan_ids = list(vlan_list.keys())
     print("After running this script, the following VLAN IDs exist on the switch: {}".format(vlan_ids))
