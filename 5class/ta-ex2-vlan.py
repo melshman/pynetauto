@@ -68,8 +68,8 @@ def main():
     vlan_ids = list(vlan_list.keys())
     print("The following VLANs currently exist on the switch:  {}".format(vlan_ids))
     if len(args_list)>2:
-    	cmd_func = args_list[1] # either --name or --remove
-    	print("The command function is identified as {}".format(cmd_func))
+        cmd_func = args_list[1] # either --name or --remove
+        print("The command function is identified as {}".format(cmd_func))
         print("Length of the args_list is {}".format(len(args_list)))
     else:
         print("Invalid parameters for this script, must include arguments!")
