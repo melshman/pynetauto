@@ -54,20 +54,21 @@ def test_vlan():
     # vlans.configure_vlan(blue)
 
 def main():
+    # grabbing the args of type list provided by user at the command line
     args_list = sys.argv
-    # testing(args_list)
 
     # create a node object by specifying the node to work with
     node = pyeapi.connect_to('pynet-sw3')
 
     # get the instance of the API (in this case vlans)
     vlans = node.api('vlans')
-    # test_vlan()
+    # test_vlan()  # runs the test_vlan() function above
+
     vlan_list = vlans.getall()
     vlan_ids = list(vlan_list.keys())
     print("The following VLANs currently exist on the switch:  {}".format(vlan_ids))
 
-    cmd_func = args_list[1]
+    cmd_func = args_list[1] # either --name or --remove
     recognized_funcs = ["--name", "--remove"]
 
     print("The command function is identified as {}".format(cmd_func))
