@@ -73,7 +73,7 @@ def main():
         print("Length of the args_list is {}".format(len(args_list)))
     else:
         print("Invalid parameters for this script, must include arguments!")
-
+        cmd_func = ""
     recognized_funcs = ["--name", "--remove"]
 
 
