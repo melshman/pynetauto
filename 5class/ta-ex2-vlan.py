@@ -67,14 +67,19 @@ def main():
     vlan_list = vlans.getall()
     vlan_ids = list(vlan_list.keys())
     print("The following VLANs currently exist on the switch:  {}".format(vlan_ids))
+    if len(args_list)>2:
+    	cmd_func = args_list[1] # either --name or --remove
+    	print("The command function is identified as {}".format(cmd_func))
+        print("Length of the args_list is {}".format(len(args_list)))
+    else:
+        print("Invalid parameters for this script, must include arguments!")
 
-    cmd_func = args_list[1] # either --name or --remove
     recognized_funcs = ["--name", "--remove"]
 
-    print("The command function is identified as {}".format(cmd_func))
-    print("Length of the args_list is {}".format(len(args_list)))
 
-    if cmd_func not in ["--name", "--remove"]:  # valid function not provided
+
+    # if cmd_func not in ["--name", "--remove"]:  # valid function not provided
+    if cmd_func not in recognized_funcs:  # valid function not provided
         print("A recognized function was not provided in command line arguments")
     elif cmd_func == "--name": # add vlan operation called
         if len(args_list) != 4:
