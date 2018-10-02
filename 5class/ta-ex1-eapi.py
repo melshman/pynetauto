@@ -37,24 +37,10 @@ def main():
     tshoot_ints(r_ints, ints)
 
     for int, value in ints.items():
-        # if ints.get(int)
-        print(int)
-        print(value)
-        # int_value1 = value.get(int)
-        # int_value2 = ints.get(int)
-        print("value.get(int) = {} and ints.get(int) = {}".format(int_value1, int_value2))
-        print("ints.get(name) = {}".format(ints.get('name'))
-
-        if value.get(int):
-            pprint("starting interface: {}".format(int))
-            int_counters = value.get('interfaceCounters', {})
-            inOct  = int_counters.get('inOctets')
-            outOct = int_counters.get('outOctets')
-            # inOct  = r_ints[0]['result']['interfaces'][int]['interfaceCounters']['inOctets']
-            # outOct = r_ints[0]['result']['interfaces'][int]['interfaceCounters']['outOctets']
-            print("Interface {}: inOctet = {} AND outOctets = {}".format(int, inOct, outOct))
-        else:
-        	print("Interface {} does not report in/out Octets".format(int))
+        int_counters = value.get('interfaceCounters', {})
+        inOct  = int_counters.get('inOctets')
+        outOct = int_counters.get('outOctets')
+        print("Interface {}: inOctet = {} AND outOctets = {}".format(int, inOct, outOct))
 
 ## Old way... not versitile
     # for int, value in ints.items():
