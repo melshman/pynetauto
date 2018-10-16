@@ -29,11 +29,11 @@ def main():
 	    	port=8443)
 	    result = device.show('show ip route vrf management')
 	    pprint(result)
-	    pprint()
+	    print()
 	    pprint(result.Table_vrf.ROW_vrf)
-	    pprint()
+	    print()
 	    pprint(result.Table_vrf.ROW_vrf.TABLE_addrf.ROW_addrf.TABLE_prefix.ROW_prefix[0])
-	    pprint()
+	    print()
 	    pprint(result.Table_vrf.ROW_vrf.TABLE_addrf.ROW_addrf.TABLE_prefix.ROW_prefix[0].TABLE_path.ROW_path.ipnexthop)    
 
 if __name__ == '__main__':
