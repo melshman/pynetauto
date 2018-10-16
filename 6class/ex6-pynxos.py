@@ -32,9 +32,9 @@ def main():
 	    print()
 	    pprint(result.Table_vrf.ROW_vrf)
 	    print()
-	    pprint(result.Table_vrf.ROW_vrf.TABLE_addrf.ROW_addrf.TABLE_prefix.ROW_prefix[0])
+	    pprint(result['Table_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix'][0])
 	    print()
-	    pprint(result.Table_vrf.ROW_vrf.TABLE_addrf.ROW_addrf.TABLE_prefix.ROW_prefix[0].TABLE_path.ROW_path.ipnexthop)    
+	    pprint(result['Table_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix'][0]['TABLE_path']['ROW_path']['ipnexthop'])    
 
 if __name__ == '__main__':
     main()
