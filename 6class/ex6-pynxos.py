@@ -16,6 +16,7 @@ from pynxos.device import Device
 from getpass import getpass
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from pprint import pprint
 
 
 def main():
@@ -26,7 +27,7 @@ def main():
 	    	password=getpass(),
 	    	transport='https',
 	    	port=8443)
-	    print(device.show('show ip route vrf management'))
+	    pprint(device.show('show ip route vrf management'))
 
 if __name__ == '__main__':
     main()
