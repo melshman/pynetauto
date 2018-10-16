@@ -27,7 +27,14 @@ def main():
 	    	password=getpass(),
 	    	transport='https',
 	    	port=8443)
-	    pprint(device.show('show ip route vrf management'))
+	    result = device.show('show ip route vrf management')
+	    pprint(result)
+	    pprint()
+	    pprint(result.Table_vrf.ROW_vrf)
+	    pprint()
+	    pprint(result.Table_vrf.ROW_vrf.TABLE_addrf.ROW_addrf.TABLE_prefix.ROW_prefix[0])
+	    pprint()
+	    pprint(result.Table_vrf.ROW_vrf.TABLE_addrf.ROW_addrf.TABLE_prefix.ROW_prefix[0].TABLE_path.ROW_path.ipnexthop)    
 
 if __name__ == '__main__':
     main()
