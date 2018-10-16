@@ -22,7 +22,7 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 def main():
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     for host in ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']:
-	    device = Device(host='',
+	    device = Device(host=host,
 	    	username='pyclass',
 	    	password=getpass(),
 	    	transport='https',
