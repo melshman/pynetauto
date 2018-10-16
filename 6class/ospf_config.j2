@@ -1,0 +1,6 @@
+router ospf {{ process_id }}
+ network {{network}} {{wildcard_mask}} area {{area}}
+{% if loopback0_addr is defined %}
+interface Loopback0
+ ip address {{loopback0_addr}} {{loopback0_mask}}
+{% endif %}
