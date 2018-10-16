@@ -15,6 +15,7 @@ from __future__ import unicode_literals, print_function
 # from jinja2.environment import Environment
 from pynxos.device import Device
 from getpass import getpass
+import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 
