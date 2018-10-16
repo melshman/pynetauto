@@ -13,7 +13,7 @@ each of the devices. Print this show hostname output to standard output.
 from __future__ import unicode_literals, print_function
 # from jinja2 import FileSystemLoader, StrictUndefined
 # from jinja2.environment import Environment
-from pynxos.device import device
+from pynxos.device import Device
 from getpass import getpass
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
