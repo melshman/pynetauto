@@ -32,7 +32,7 @@ def main():
 	    print()
 	    pprint(result['TABLE_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix'][0])
 	    print()
-	    pprint(result['TABLE_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix'][0]['TABLE_path']['ROW_path']['ipnexthop'])    
-
+	    ipnexthop = result['TABLE_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix'][0]['TABLE_path']['ROW_path']['ipnexthop'] 
+        print("The next hop IP address for the default route is {}.".format(ipnexthop))
 if __name__ == '__main__':
     main()
