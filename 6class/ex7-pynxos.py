@@ -25,11 +25,11 @@ from pprint import pprint
 def main():
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     hosts = ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']
-
+    password = getpass()
     for host in hosts:
 	    device = Device(host=host,
 	    	username='pyclass',
-	    	password=getpass(),
+	    	password=password,
 	    	transport='https',
 	    	port=8443)
 	    command_list = ['interface Loopback66', 'ip address 172.31.255.66/32']
