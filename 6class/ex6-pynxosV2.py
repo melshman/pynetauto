@@ -21,15 +21,17 @@ from pprint import pprint
 
 def main():
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+	password = getpass()
 	for host in ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']:
 	    device = Device(host=host,
 	    	username='pyclass',
-	    	password=getpass(),
+	    	password=password,
 	    	transport='https',
 	    	port=8443)
 	    result = device.show('show ip route vrf management')
 	    # ipnexthop = result['TABLE_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix'][0]['TABLE_path']['ROW_path']['ipnexthop']
 	    route_table = result['TABLE_vrf']['ROW_vrf']['TABLE_addrf']['ROW_addrf']['TABLE_prefix']['ROW_prefix']
+	    print()
 	    print(host)
 	    print('-' * 40)
 	    print(route_table)
@@ -41,6 +43,7 @@ def main():
 	            print("Default Gateway: {}".format(next_hop))
 	            break
 	    print('-' * 40)
+	    print()
 
 
 if __name__ == '__main__':
