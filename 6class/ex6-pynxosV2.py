@@ -20,7 +20,7 @@ from pprint import pprint
 
 
 def main():
-    requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 	for host in ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']:
 	    device = Device(host=host,
 	    	username='pyclass',
