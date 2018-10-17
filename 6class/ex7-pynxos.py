@@ -26,13 +26,14 @@ def main():
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     hosts = ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']
     password = getpass()
+    command_list = ['interface Loopback66', 'ip address 172.31.255.66/32']
+
     for host in hosts:
 	    device = Device(host=host,
 	    	username='pyclass',
 	    	password=password,
 	    	transport='https',
 	    	port=8443)
-	    command_list = ['interface Loopback66', 'ip address 172.31.255.66/32']
 	    device.config_list(command_list)
 	    result = device.show('show run interface loopback66', raw_text=True)
 	    print(result)
