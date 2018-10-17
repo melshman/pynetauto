@@ -21,7 +21,7 @@ from pprint import pprint
 
 def main():
     requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-    for host in ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']:
+	for host in ['nxos1.twb-tech.com', 'nxos2.twb-tech.com']:
 	    device = Device(host=host,
 	    	username='pyclass',
 	    	password=getpass(),
@@ -35,12 +35,12 @@ def main():
 	    print(route_table)
 	    print('-' * 40)
 
-        for route_entry in route_table:
-            if route_entry['ipprefix'] == '0.0.0.0/0':
-                next_hop = route_entry['TABLE_path']['ROW_path']['ipnexthop'] 
-                print("Default Gateway: {}".format(next_hop))
-                break
-        print('-' * 40)
+	    for route_entry in route_table:
+	        if route_entry['ipprefix'] == '0.0.0.0/0':
+	            next_hop = route_entry['TABLE_path']['ROW_path']['ipnexthop'] 
+	            print("Default Gateway: {}".format(next_hop))
+	            break
+	    print('-' * 40)
 
 
 if __name__ == '__main__':
