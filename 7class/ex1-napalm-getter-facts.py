@@ -44,40 +44,40 @@ def main():
 		'optional_args' : {}
 	}
 	cisco_rtr2 = {
-		hostname = '184.105.247.71',
-		device_type = 'ios',
-		password = password,
-		username = 'pyclass',
-		optional_args = {}
+		'hostname' : '184.105.247.71',
+		'device_type' : 'ios',
+		'password' : password,
+		'username' : 'pyclass',
+		'optional_args' : {}
 	}
 	arista_sw1 = {
-		hostname = '184.105.247.72',
-		device_type = 'eos',
-		password = password,
-		username = 'pyclass',
-		optional_args = {}
+		'hostname' : '184.105.247.72',
+		'device_type' : 'eos',
+		'password' : password,
+		'username' : 'pyclass',
+		'optional_args' : {}
 	}
 	arista_sw2 = {
-		hostname = '184.105.247.73',
-		device_type = 'eos',
-		password = password,
-		username = 'pyclass',
-		optional_args = {}
+		'hostname' : '184.105.247.73',
+		'device_type' : 'eos',
+		'password' : password,
+		'username' : 'pyclass',
+		'optional_args' : {}
 	}
 
 	jnpr_srx1 = {
-		hostname = '184.105.247.76',
-		device_type = 'junos',
-		password = password,
-		username = 'pyclass',
-		optional_args = {}
+		'hostname' : '184.105.247.76',
+		'device_type' : 'junos',
+		'password' : password,
+		'username' : 'pyclass',
+		'optional_args' : {}
 	}
 	cisco_nxos = {
-		hostname = 'nxos1.twb-tech.com',
-		device_type = 'nxos',
-		password = password,
-		username = 'pyclass',
-		optional_args = {}
+		'hostname' : 'nxos1.twb-tech.com',
+		'device_type' : 'nxos',
+		'password' : password,
+		'username' : 'pyclass',
+		'optional_args' : {}
 	}
 
 
