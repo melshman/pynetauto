@@ -77,7 +77,7 @@ def main():
 		'device_type' : 'nxos',
 		'password' : password,
 		'username' : 'pyclass',
-		'optional_args' : {'port' : '8443'
+		'optional_args' : {'port' : '8443',
 							'nxos_protocol' : 'https'
 		}
 	}
