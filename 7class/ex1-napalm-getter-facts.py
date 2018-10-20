@@ -91,7 +91,7 @@ def main():
 		napalm_conns.append(device)
 		print("\n {} device created!".format(a_device['hostname']))
 		device.open()
-		print("\n Device connection opened of type {}!".format(a_device['device_type']))
+		# print("\n Device connection opened of type {}!".format(a_device['device_type']))
 		print("\n\n")
 		facts = device.get_facts()
 		pprint(facts)
