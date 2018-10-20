@@ -37,11 +37,11 @@ def main():
 	password = getpass()
 
 	cisco_rtr1 = {
-		hostname = '184.105.247.70',
-		device_type = 'ios',
-		password = password,
-		username = 'pyclass',
-		optional_args = {}
+		'hostname' : '184.105.247.70',
+		'device_type' : 'ios',
+		'password' : password,
+		'username' : 'pyclass',
+		'optional_args' : {}
 	}
 	cisco_rtr2 = {
 		hostname = '184.105.247.71',
