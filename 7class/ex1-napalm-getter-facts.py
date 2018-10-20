@@ -82,7 +82,7 @@ def main():
 
 
 	devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-
+	napalm_conns = []
 
 	for a_device in devices:
 		device_type = a_device.pop('device_type')
