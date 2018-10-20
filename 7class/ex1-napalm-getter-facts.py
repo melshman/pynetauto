@@ -77,7 +77,9 @@ def main():
 		'device_type' : 'nxos',
 		'password' : password,
 		'username' : 'pyclass',
-		'optional_args' : {}
+		'optional_args' : {'port' : '8443'
+							'nxos_protocol' : 'https'
+		}
 	}
 
 
@@ -85,13 +87,13 @@ def main():
 	napalm_conns = []
 
 	for a_device in devices:
-		device_type = a_device.pop('device_type')
+		device_type = a_device['device_type']
 		driver = get_network_driver(device_type)
 		device = driver(**a_device)
 		napalm_conns.append(device)
 		print("\n {} device created!".format(a_device['hostname']))
 		device.open()
-		# print("\n Device connection opened of type {}!".format(a_device['device_type']))
+		print("\n Device connection opened of type {}!".format(a_device['device_type']))
 		print("\n\n")
 		facts = device.get_facts()
 		pprint(facts)
