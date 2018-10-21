@@ -89,7 +89,7 @@ def main():
 		pprint(lldp)
 		ports_list = []
 		for key in lldp.keys():
-			ports_list = ports_list.append(lldp[key]['port'])
+			ports_list = ports_list.append(lldp[key][0]['port'])
 		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n\n")
 		print("")
