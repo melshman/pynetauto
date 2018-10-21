@@ -96,10 +96,10 @@ def main():
 	yaml_file = 'my_devices.yaml'
 
 	napalm_conns = []
-	
-	# with open(yaml_file) as f:
-	# 	devices = yaml.load(f)
-	# 	pprint(devices)
+
+	with open(yaml_file) as f:
+		devices = yaml.load(f)
+		pprint(devices)
 	# 	print("\n")
 	# 	for device in devices:
 	# 		print(" ********************  DEVICE START  **********************")
@@ -117,7 +117,7 @@ def main():
 
 	for a_device in devices:
 		for key in device.keys():
-			device_type = a_device[key]['device_type']
+			device_type = a_device[key].pop('device_type')
 			# device_type = a_device.pop('device_type')
 			driver = get_network_driver(device_type)
 			device = driver(**a_device[key])
