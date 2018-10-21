@@ -13,25 +13,8 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 """
 
-1. Construct a script that retrieves NAPALM facts from two IOS routers, two Arista switches, 
-one Junos device, and one NX-OS switch.
-pynet-rtr1   (Cisco IOS)  184.105.247.70
-pynet-rtr2   (Cisco IOS)  184.105.247.71
-pynet-sw1    (Arista EOS) 184.105.247.72
-pynet-sw2    (Arista EOS) 184.105.247.73
-​juniper-srx               184.105.247.76
-nxos1        (Cisco NXOS) nxos1.twb-tech.com
-
-Retrieve the 'model' number from each device and print the model to standard out.
-
-As part of this exercise define the devices that you use in a Python file 
-(for example my_devices.py) and import these devices into your program. 
-Optionally, define the devices in a YAML file and read this my_devices.yml 
-file into your program.
-
-Note, NAPALM will automatically make a connection using the appropriate transport 
-as part of this exercise. The transports will be as follows 
-(Cisco IOS = SSH, Arista EOS = eAPI, Juniper = NETCONF, Cisco NX-OS = NX-API).
+2. Using NAPALM retrieve 'get_lldp_neighbors' from pynet-rtr1 and from 
+pynet-rtr2. Print out retrieved LLDP information to standard output.
 
 """
 
@@ -87,7 +70,10 @@ def main():
 	}
 
 
-	devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
+	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
+	devices = (cisco_rtr1, cisco_rtr2)
+
+	
 	napalm_conns = []
 
 	for a_device in devices:
@@ -95,13 +81,14 @@ def main():
 		driver = get_network_driver(device_type)
 		device = driver(**a_device)
 		napalm_conns.append(device)
+		print(" ********************  DEVICE START  **********************")
 		print("\n {} device created!".format(a_device['hostname']))
 		device.open()
 		print("\n Device connection opened of type {}!".format(device_type))
 		print("\n")
-		facts = device.get_facts()
-		model = facts['model']
-		pprint(model)
+		lldp = device.get_lldp_neighbors()
+		# model = facts['model']
+		pprint(lldp)
 		print("\n\n")
 
 
