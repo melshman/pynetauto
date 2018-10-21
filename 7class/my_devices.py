@@ -1,5 +1,6 @@
 #!/user/bin/env python
 
+from getpass import getpass
 
 
 """
@@ -27,6 +28,8 @@ as part of this exercise. The transports will be as follows
 """
 
 
+
+password = getpass("Enter standard password: ")
 
 cisco_rtr1 = {
 	'hostname' : '184.105.247.70',
