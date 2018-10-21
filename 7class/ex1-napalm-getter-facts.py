@@ -7,7 +7,7 @@ from getpass import getpass
 from pprint import pprint
 
 from napalm import get_network_driver
-from my_devices import devices
+from my_devices import main
 
 """
 
