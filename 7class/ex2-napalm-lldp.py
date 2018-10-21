@@ -3,7 +3,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-# from getpass import getpass
+from getpass import getpass
 from pprint import pprint
 
 from napalm import get_network_driver
