@@ -90,7 +90,7 @@ def main():
 		pprint(lldp)
 		neighbors_list = []
 		for key in lldp.keys():
-			ports_list = ports_list.append(lldp[key][0]['hostname'])
+			neighbor_list = neighbor_list.append(lldp[key][0]['hostname'])
 			print("\n)")
 		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n\n")
