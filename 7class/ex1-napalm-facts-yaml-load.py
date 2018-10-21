@@ -131,7 +131,7 @@ def main():
 	# 		pprint(model)
 	# 		print("\n\n")
 
-	for device_name, a_device in devices[0]items():
+	for device_name, a_device in devices[0].items():
 		print(device_name)
 		print(a_device)
 		device_type = a_device.pop('device_type')
