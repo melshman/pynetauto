@@ -7,7 +7,7 @@ from getpass import getpass
 from pprint import pprint
 
 from napalm import get_network_driver
-import my_devices
+from my_devices import devices
 
 """
 
@@ -87,7 +87,7 @@ def main():
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
 	napalm_conns = []
 
-	for a_device in my_devices.devices:
+	for a_device in devices:
 		device_type = a_device.pop('device_type')
 		driver = get_network_driver(device_type)
 		device = driver(**a_device)
