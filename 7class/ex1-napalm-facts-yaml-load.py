@@ -40,8 +40,7 @@ as part of this exercise. The transports will be as follows
 
 
 def main():
-	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-	password = getpass()
+
 
 	# cisco_rtr1 = {
 	# 	'hostname' : '184.105.247.70',
@@ -90,8 +89,10 @@ def main():
 	# }
 
 
-	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
 
+	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+	password = getpass()
+	devices = []
 	with open(my_devices.yaml) as f:
 		devices = yaml.load(f)
 
