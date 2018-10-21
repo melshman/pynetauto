@@ -140,7 +140,7 @@ def main():
 		a_device['password'] = password
 		device = driver(**a_device) 
 		napalm_conns.append(device)
-		print("\n {} device created!".format(a_device[key]['hostname']))
+		print("\n {} device created!".format(a_device['hostname']))
 		device.open()
 		print("\n Device connection opened of type {}!".format(device_type))
 		print("\n")
