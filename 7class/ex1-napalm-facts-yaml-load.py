@@ -116,7 +116,7 @@ def main():
 
 
 	for a_device in devices:
-		for key in device.keys():
+		for key in a_device.keys():
 			device_type = a_device[key].pop('device_type')
 			# device_type = a_device.pop('device_type')
 			driver = get_network_driver(device_type)
