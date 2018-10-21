@@ -7,7 +7,9 @@ from getpass import getpass
 from pprint import pprint
 
 from napalm import get_network_driver
-from my_devices import main
+from my_devices import devices
+
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 """
 
@@ -35,6 +37,7 @@ as part of this exercise. The transports will be as follows
 
 
 def main():
+	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 	password = getpass()
 
 	# cisco_rtr1 = {
