@@ -86,13 +86,16 @@ def main():
 		print("\n Device connection opened of type {}!".format(device_type))
 		lldp = device.get_lldp_neighbors()
 		# model = facts['model']
+		print("\n)")
 		pprint(lldp)
 		ports_list = []
 		for key in lldp.keys():
 			ports_list = ports_list.append(lldp[key][0]['port'])
+			print("\n)")
 		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n\n")
 		print("")
+	print(ports_list)
 	print("The ports associated with a LLDP Neighor connection are:  {}".format(ports_list))
 
 if __name__ == "__main__":
