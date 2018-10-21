@@ -8,6 +8,7 @@ from pprint import pprint
 
 from napalm import get_network_driver
 # from my_devices import devices
+import yaml
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
