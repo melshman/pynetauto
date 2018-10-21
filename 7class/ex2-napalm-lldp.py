@@ -88,15 +88,15 @@ def main():
 		# model = facts['model']
 		print("\n)")
 		pprint(lldp)
-		ports_list = []
+		neighbors_list = []
 		for key in lldp.keys():
-			ports_list = ports_list.append(lldp[key][0]['port'])
+			ports_list = ports_list.append(lldp[key][0]['hostname'])
 			print("\n)")
 		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n\n")
 		print("")
-	print(ports_list)
-	print("The ports associated with a LLDP Neighor connection are:  {}".format(ports_list))
+	print(neighbor_list)
+	print("The neighbors are:  {}".format(neighbor_list))
 
 if __name__ == "__main__":
 	main()
