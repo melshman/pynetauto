@@ -26,7 +26,7 @@ as part of this exercise. The transports will be as follows
 
 """
 
-password = getpass()
+
 
 cisco_rtr1 = {
 	'hostname' : '184.105.247.70',
