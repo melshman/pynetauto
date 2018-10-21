@@ -112,23 +112,21 @@ def main():
 			print("")
 	# 	pprint(devices[item_num]['cisco_rtr1']['device_type'])
 
-		napalm_conns = []
+		# napalm_conns = []
 
-		for a_device in devices:
-			for key in device.keys():
-				device_type = a_device[key]['device_type']
-				# device_type = a_device.pop('device_type')
-				driver = get_network_driver(device_type)
-				device = driver(**a_device[key])
-				napalm_conns.append(device)
-				print("\n {} device created!".format(a_device[key]['hostname']))
-				device.open()
-				print("\n Device connection opened of type {}!".format(device_type))
-				print("\n")
-				facts = device.get_facts()
-				model = facts['model']
-				pprint(model)
-				print("\n\n")
+		# for a_device in devices:
+		# 	device_type = a_device.pop('device_type')
+		# 	driver = get_network_driver(device_type)
+		# 	device = driver(**a_device)
+		# 	napalm_conns.append(device)
+		# 	print("\n {} device created!".format(a_device['hostname']))
+		# 	device.open()
+		# 	print("\n Device connection opened of type {}!".format(device_type))
+		# 	print("\n")
+		# 	facts = device.get_facts()
+		# 	model = facts['model']
+		# 	pprint(model)
+		# 	print("\n\n")
 
 
 if __name__ == "__main__":
