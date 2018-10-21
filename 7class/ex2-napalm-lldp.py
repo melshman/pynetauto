@@ -7,7 +7,7 @@ from __future__ import unicode_literals
 from pprint import pprint
 
 from napalm import get_network_driver
-from my_devices import devices
+# from my_devices import devices
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -20,7 +20,7 @@ pynet-rtr2. Print out retrieved LLDP information to standard output.
 
 def main():
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-	# password = getpass()
+	password = getpass()
 
 	cisco_rtr1 = {
 		'hostname' : '184.105.247.70',
@@ -50,7 +50,6 @@ def main():
 		'username' : 'pyclass',
 		'optional_args' : {}
 	}
-
 	jnpr_srx1 = {
 		'hostname' : '184.105.247.76',
 		'device_type' : 'junos',
