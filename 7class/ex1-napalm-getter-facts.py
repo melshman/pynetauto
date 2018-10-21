@@ -96,7 +96,8 @@ def main():
 		print("\n Device connection opened of type {}!".format(device_type))
 		print("\n\n")
 		facts = device.get_facts()
-		pprint(facts)
+		model = facts['model']
+		pprint(model)
 		print("\n\n")
 
 
