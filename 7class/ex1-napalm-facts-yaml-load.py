@@ -115,21 +115,39 @@ def main():
 	# 	pprint(devices[item_num]['cisco_rtr1']['device_type'])
 
 
-	for a_device in devices:
-		for key in a_device.keys():
-			device_type = a_device[key].pop('device_type')
-			# device_type = a_device.pop('device_type')
-			driver = get_network_driver(device_type)
-			device = driver(**a_device[key])
-			napalm_conns.append(device)
-			print("\n {} device created!".format(a_device[key]['hostname']))
-			device.open()
-			print("\n Device connection opened of type {}!".format(device_type))
-			print("\n")
-			facts = device.get_facts()
-			model = facts['model']
-			pprint(model)
-			print("\n\n")
+	# for a_device in devices:
+	# 	for key in a_device.keys():
+	# 		device_type = a_device[key].pop('device_type')
+	# 		# device_type = a_device.pop('device_type')
+	# 		driver = get_network_driver(device_type)
+	# 		device = driver(**a_device[key])
+	# 		napalm_conns.append(device)
+	# 		print("\n {} device created!".format(a_device[key]['hostname']))
+	# 		device.open()
+	# 		print("\n Device connection opened of type {}!".format(device_type))
+	# 		print("\n")
+	# 		facts = device.get_facts()
+	# 		model = facts['model']
+	# 		pprint(model)
+	# 		print("\n\n")
+
+	for device_name, a_device in devices.items():
+		print(device_name)
+		print(a_device)
+		device_type = a_device.pop('device_type')
+		driver = get_network_driver(device_type)
+		# Set the password
+		a_device['password'] = password
+		device = driver(**a_device) 
+		napalm_conns.append(device)
+		print("\n {} device created!".format(a_device[key]['hostname']))
+		device.open()
+		print("\n Device connection opened of type {}!".format(device_type))
+		print("\n")
+		facts = device.get_facts()
+		model = facts['model']
+		pprint(model)
+		print("\n\n")
 
 
 if __name__ == "__main__":
