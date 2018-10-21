@@ -7,8 +7,10 @@ from getpass import getpass
 from pprint import pprint
 
 from napalm import get_network_driver
+
 # from my_devices import devices
 import yaml
+
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -91,7 +93,7 @@ def main():
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
 
 	with open(my_devices.yaml) as f:
-		devices = f.yaml.load(f)
+		devices = yaml.load(f)
 
 		napalm_conns = []
 
