@@ -88,7 +88,7 @@ def main():
 		# model = facts['model']
 		print("\n)")
 		pprint(lldp)
-		neighbors_list = []
+		neighbor_list = []
 		for key in lldp.keys():
 			neighbor_list = neighbor_list.append(lldp[key][0]['hostname'])
 			print("\n)")
