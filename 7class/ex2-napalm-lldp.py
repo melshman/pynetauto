@@ -3,7 +3,7 @@
 from __future__ import print_function
 from __future__ import unicode_literals
 
-from getpass import getpass
+# from getpass import getpass
 from pprint import pprint
 
 from napalm import get_network_driver
@@ -18,10 +18,9 @@ pynet-rtr2. Print out retrieved LLDP information to standard output.
 
 """
 
-
 def main():
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-	password = getpass()
+	# password = getpass()
 
 	cisco_rtr1 = {
 		'hostname' : '184.105.247.70',
@@ -89,6 +88,7 @@ def main():
 		lldp = device.get_lldp_neighbors()
 		# model = facts['model']
 		pprint(lldp)
+		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n\n")
 
 

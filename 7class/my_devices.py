@@ -29,7 +29,7 @@ as part of this exercise. The transports will be as follows
 
 
 
-password = getpass("Enter standard password: ")
+password = getpass("Enter standard password for all devices: ")
 
 cisco_rtr1 = {
 	'hostname' : '184.105.247.70',
