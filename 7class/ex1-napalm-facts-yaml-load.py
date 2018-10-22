@@ -100,6 +100,7 @@ def main():
 	with open(yaml_file) as f:
 		devices = yaml.load(f)
 		pprint(devices)
+		print("\n\n")
 	# 	print("\n")
 	# 	for device in devices:
 	# 		print(" ********************  DEVICE START  **********************")
@@ -132,9 +133,10 @@ def main():
 	# 		print("\n\n")
 
 	for a_device in devices:
+		print(" ********************  DEVICE START  **********************")
 		print(a_device)
 		for device_name, device_dict in a_device.items():
-			print(device_name)
+			print("***************** START:  {}  *******************************".format(device_name))
 			print(device_dict)
 			device_type = device_dict.pop('device_type')
 			print(device_type)
@@ -149,9 +151,11 @@ def main():
 			print("\n")
 			facts = device.get_facts()
 			model = facts['model']
-			pprint(model)
+			print("The Model of this devices is :  ".format(model))
 			print("\n\n")
+			print("***************** END:  {}  *******************************".format(device_name))
 
+		print(" ------------------------  DEVICE END  ----------------------")
 
 if __name__ == "__main__":
 	main()
