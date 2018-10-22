@@ -131,16 +131,19 @@ def main():
 	# 		pprint(model)
 	# 		print("\n\n")
 
-	for device_name, a_device in devices[0].items():
+	for a_device in devices:
+		print(device)
+		for device_name, device_dict in devices.items():
 		print(device_name)
-		print(a_device)
-		device_type = a_device.pop('device_type')
+		print(device_dict)
+		device_type = device_dict.pop('device_type')
+		print(device_type)
 		driver = get_network_driver(device_type)
 		# Set the password
-		a_device['password'] = password
-		device = driver(**a_device) 
+		device_dict['password'] = password
+		device = driver(**device_dict) 
 		napalm_conns.append(device)
-		print("\n {} device created!".format(a_device['hostname']))
+		print("\n {} device created!".format(device_dict['hostname']))
 		device.open()
 		print("\n Device connection opened of type {}!".format(device_type))
 		print("\n")
