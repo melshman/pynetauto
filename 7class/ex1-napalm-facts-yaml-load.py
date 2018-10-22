@@ -133,7 +133,7 @@ def main():
 
 	for a_device in devices:
 		print(a_device)
-		for device_name, device_dict in devices.items():
+		for device_name, device_dict in a_device.items():
 			print(device_name)
 			print(device_dict)
 			device_type = device_dict.pop('device_type')
