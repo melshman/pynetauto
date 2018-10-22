@@ -132,7 +132,7 @@ def main():
 	# 		print("\n\n")
 
 	for a_device in devices:
-		print(device)
+		print(a_device)
 		for device_name, device_dict in devices.items():
 			print(device_name)
 			print(device_dict)
