@@ -114,7 +114,7 @@ def main():
 		print("\nDevice connection opened! Type: {}".format(device_type))
 		intfs = device.get_interfaces()
 		pprint(intfs)
-		for int, int_dict in intfs:
+		for int, int_dict in intfs.items():
 			print(int)
 			print(int_dict)
 			print("---------")
