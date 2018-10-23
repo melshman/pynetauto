@@ -84,7 +84,7 @@ def main():
 	print(type(devices))
 	print(len(devices))
 
-	if type(devices) == "dict":
+	if type(devices) == "<class 'dict'>":
 		print("\n")
 		pprint(devices)
 		print(type(devices))
