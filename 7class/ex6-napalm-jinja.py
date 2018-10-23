@@ -173,7 +173,8 @@ def main():
 		print(device.compare_config())
 		device.commit_config()
 
-
+		ping_google(device)
+		print("\n\n")
 
 if __name__ == "__main__":
 	main()
