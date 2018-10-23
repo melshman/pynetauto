@@ -91,6 +91,7 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
+	up_up = []
 	devices = (arista_sw2,) 
 	print(devices)
 	## Note that we need to change the logic below because when only one item in the tuple
@@ -114,11 +115,15 @@ def main():
 		print("\nDevice connection opened! Type: {}".format(device_type))
 		intfs = device.get_interfaces()
 		pprint(intfs)
-		for int, int_dict in intfs.items():
-			print(int)
-			print(int_dict)
+		for intf, intf_dict in intfs.items():
+			print(intf)
+			print(intf_dict)
 			print("---------")
 			print("\n")
+			intf_up = intf_dict['is_up']
+			inttf_enabled = intf_dict['is_enabled']
+			if intf_up and inttf_enabled:
+				up_up.append(intf)
 
 		# is_up = bgp['global']['peers'][bgp_neighbor]['is_up']
 		# print("\nBGP peer, {}, is_up status is {}".format(bgp_neighbor, is_up))
@@ -126,7 +131,7 @@ def main():
 
 		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n")
-
+	print(up_up)
 
 
 """
