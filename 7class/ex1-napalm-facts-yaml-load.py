@@ -136,10 +136,9 @@ def main():
 		# print(a_device)
 		for device_name, device_dict in a_device.items():
 			print("***************** START:  {}  *******************************".format(device_name))
-			print("\n")
 			print(device_dict)
 			device_type = device_dict.pop('device_type')
-			print("The Device Type is:  {}".format(device_type))
+			print("\nThe Device Type is:  {}".format(device_type))
 			driver = get_network_driver(device_type)
 			# Set the password
 			device_dict['password'] = password
