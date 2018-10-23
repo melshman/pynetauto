@@ -80,7 +80,7 @@ def main():
 	napalm_conns = []
 	neighbor_list = []
 	port_list = []
-	if len(devices) = 1:
+	if len(devices) == 1:
 		print("\n")
 		pprint(devices)
 		print(type(devices))
