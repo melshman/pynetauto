@@ -17,6 +17,26 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 Find all of the interfaces that are in an UP-UP state (is_enabled=True, 
 and is_up=True). Print all of these UP-UP interfaces to standard output.
 
+output
+{'Ethernet1': {'description': '',
+               'is_enabled': True,
+               'is_up': True,
+               'last_flapped': 1538591527.2426357,
+               'mac_address': '52:54:AB:02:A1:11',
+               'speed': 0},
+ 'Ethernet2': {'description': '',
+               'is_enabled': True,
+               'is_up': True,
+               'last_flapped': 1538591527.2428465,
+               'mac_address': '52:54:AB:02:A1:12',
+               'speed': 0},
+ 'Ethernet3': {'description': '',
+               'is_enabled': True,
+               'is_up': True,
+               'last_flapped': 1538591527.2430475,
+               'mac_address': '52:54:AB:02:A1:13',
+               'speed': 0},
+
 """
 
 def main():
@@ -94,9 +114,14 @@ def main():
 		print("\nDevice connection opened! Type: {}".format(device_type))
 		intfs = device.get_interfaces()
 		pprint(intfs)
+		for int, int_dict in intfs:
+			print(int)
+			print(int_dict)
+			print("---------")
+			print("\n")
 
 		# is_up = bgp['global']['peers'][bgp_neighbor]['is_up']
-		print("\nBGP peer, {}, is_up status is {}".format(bgp_neighbor, is_up))
+		# print("\nBGP peer, {}, is_up status is {}".format(bgp_neighbor, is_up))
 		print("\n")
 
 		print(" ---------------------  DEVICE END  -----------------------")
