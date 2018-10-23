@@ -103,9 +103,9 @@ def main():
 			print(" ---------------------  DEVICE END  -----------------------")
 			print("\n")
 	else:
-		# print("\n")
-		# pprint(a_device)
-		# print(type(a_device))
+		print("\n")
+		pprint(device)
+		print(type(device))
 		print("\n")
 		device_type = device.pop('device_type')
 		driver = get_network_driver(device_type)
