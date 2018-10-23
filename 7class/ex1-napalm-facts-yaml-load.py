@@ -93,8 +93,8 @@ def main():
 
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 	password = getpass()
-	# yaml_file = 'my_devices.yaml'
-	yaml_file = 'kb.yaml'
+	yaml_file = 'my_devices.yaml'
+	# yaml_file = 'kb.yaml'
 	napalm_conns = []
 
 	with open(yaml_file) as f:
@@ -136,26 +136,27 @@ def main():
 		print(a_device)
 		for device_name, device_dict in a_device.items():
 			print("***************** START:  {}  *******************************".format(device_name))
+			print("\n")
 			print(device_dict)
 			device_type = device_dict.pop('device_type')
-			print(device_type)
+			print("The Device Type is:  {}".format(device_type))
 			driver = get_network_driver(device_type)
 			# Set the password
 			device_dict['password'] = password
 			device = driver(**device_dict) 
 			napalm_conns.append(device)
-			print("napalm_comms is equal to : ".format(napalm_conns))
-			print("\n {} device created!".format(device_dict['hostname']))
+			print("\nnapalm_comms is equal to: {} ".format(napalm_conns))
+			print("\n{} device created!".format(device_dict['hostname']))
 			device.open()
-			print("\n Device connection opened of type {}!".format(device_type))
+			print("\nDevice connection opened of type {}!".format(device_type))
 			print("\n")
 			facts = device.get_facts()
-			print("the facts are:  ".format(facts))
+			print("the facts are: {} ".format(facts))
 			device_model = facts['model']
-			print("The Model of this devices is :  ".format(device_model))
-			print("\n\n")
+			print("The Model of this device is: {}  ".format(device_model))
+			print("\n")
 			print("***************** END:  {}  *******************************".format(device_name))
-
+			print("\n\n")
 
 if __name__ == "__main__":
 	main()
