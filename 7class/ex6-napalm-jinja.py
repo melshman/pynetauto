@@ -170,8 +170,8 @@ def main():
 		print("\nDevice connection opened! Type: {}".format(device_type))
 		
 		device.load_template("dns", template_path=base_path, **template_vars)
-        print(device.compare_config())
-        device.commit_config()
+		print(device.compare_config())
+		device.commit_config()
 
 
 
