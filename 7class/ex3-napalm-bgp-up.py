@@ -71,35 +71,40 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-	devices = (cisco_rtr1, cisco_rtr2)
+	devices = (cisco_rtr1) 
 
-	
 	napalm_conns = []
-
+	neighbor_list = []
+	port_list = []
 	for a_device in devices:
-		print("\n)")
+		# print("\n")
+		# pprint(a_device)
+		print("\n")
 		device_type = a_device.pop('device_type')
 		driver = get_network_driver(device_type)
 		device = driver(**a_device)
 		napalm_conns.append(device)
 		print(" ********************  DEVICE START  **********************")
-		print("\n {} device created!".format(a_device['hostname']))
+		print("\nDevice created! Host: {}".format(a_device['hostname']))
 		device.open()
-		print("\n Device connection opened of type {}!".format(device_type))
-		lldp = device.get_lldp_neighbors()
-		# model = facts['model']
-		print("\n)")
-		pprint(lldp)
-		neighbor_list = []
-		for key in lldp.keys():
-			neighbor_list = neighbor_list.append(lldp[key][0]['hostname'])
-			print("\n)")
+		print("\nDevice connection opened! Type: {}".format(device_type))
+		bgp = device.get_bgp_neighbors()
+		print("\n{}\n".format(bgp))
+
+		# for key in bgp.keys():
+		# 	neighbor_list.append(bgp[key][0]['hostname'])
+		# 	port_list.append(lldp[key][0]['port'])
 		print(" ---------------------  DEVICE END  -----------------------")
-		print("\n\n")
-		print("")
-	print(neighbor_list)
-	print("The neighbors are:  {}".format(neighbor_list))
+		print("\n")
+	# print("\nThe bgp neighbors are:  {}".format(neighbor_list))
+	# print("\nThe ports are:  {}".format(port_list))
 
 if __name__ == "__main__":
 	main()
+
+"""
+
+
+"""
+
 
