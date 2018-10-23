@@ -87,7 +87,7 @@ def main():
 		device.open()
 		print("\n Device connection opened of type: {}!".format(device_type))
 		lldp = device.get_lldp_neighbors()
-		pprint("\n{}".format(lldp))
+		pprint('\n{}'.format(lldp))
 		neighbor_list = []
 		port_list = []
 		for key in lldp.keys():
@@ -95,8 +95,7 @@ def main():
 			port_list.append(lldp[key][0]['port'])
 			print("\n")
 		print(" ---------------------  DEVICE END  -----------------------")
-		print("\n\n")
-		print("")
+		print("\n")
 	print("\nThe neighbors are:  {}".format(neighbor_list))
 	print("\nThe ports are:  {}".format(port_list))
 
