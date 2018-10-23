@@ -73,7 +73,8 @@ def main():
 
 	
 	napalm_conns = []
-
+	neighbor_list = []
+	port_list = []
 	for a_device in devices:
 		# print("\n")
 		# pprint(a_device)
@@ -87,9 +88,7 @@ def main():
 		device.open()
 		print("\n Device connection opened of type: {}!".format(device_type))
 		lldp = device.get_lldp_neighbors()
-		pprint('\n{}'.format(lldp))
-		neighbor_list = []
-		port_list = []
+		print("\n{}".format(lldp))
 		for key in lldp.keys():
 			neighbor_list.append(lldp[key][0]['hostname'])
 			port_list.append(lldp[key][0]['port'])
