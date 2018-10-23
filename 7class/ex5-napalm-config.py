@@ -98,7 +98,9 @@ def main():
 		print("\nDevice connection opened! Type: {}".format(device_type))
 		# merge_cantidate exist????
 		print("\nLoading configuration merge file!")
-		device.load_merge_candidate(config = 'static_route.cfg')
+		# device.load_merge_candidate(config = hostname rtr1)
+		device.load_merge_candidate(filename = 'static_route.cfg')
+
 		diff = device.compare_config()
 		print("The difference between the current and staged configuration: \n{}".format(diff))
 		
