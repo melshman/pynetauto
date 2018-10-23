@@ -18,11 +18,18 @@ Parse the returned data structure to and verify that the BGP peer
 to 10.220.88.38 is in the established state ('is_up' field in the 
 NAPALM returned data structure).
 
-{'global': {'router_id': '10.220.88.20', 'peers': {'10.220.88.38': 
-{'local_as': 42, 'remote_as': 44, 'remote_id': '10.220.88.38', 'is_up': True, 
-'is_enabled': True, 'description': '', 'uptime': 1641600, 
-'address_family': {'ipv4': {'received_prefixes': 0, 'accepted_prefixes': 0, 
-'sent_prefixes': 0}}}}}}
+{'global': {'peers': {'10.220.88.38': {'address_family': {'ipv4': {'accepted_prefixes': 0,
+                                                                   'received_prefixes': 0,
+                                                                   'sent_prefixes': 0}},
+                                       'description': '',
+                                       'is_enabled': True,
+                                       'is_up': True,
+                                       'local_as': 42,
+                                       'remote_as': 44,
+                                       'remote_id': '10.220.88.38',
+                                       'uptime': 1641600}},
+            'router_id': '10.220.88.20'}}
+BGP peer, 10.220.88.38, is_up status is True
 
 """
 
@@ -78,23 +85,42 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-	devices = (cisco_rtr1) 
+	devices = (cisco_rtr1,) 
 	print(devices)
 	## Note that we need to change the logic below because when only one item in the tuple
 	## the type(a_device) is no longer a dictionary, it is a 
 
 	napalm_conns = []
-	neighbor_list = []
-	port_list = []
-	pprint(devices)
-	print(type(devices))
-	print(len(devices))
+	bgp_neighbor = '10.220.88.38'
+	# pprint(devices)
+	# print(type(devices))
+	# print(len(devices))
 
 	print("\n")
-	pprint(devices)
-	print(type(devices))
 	print("\n")
-	device_type = devices.pop('device_type')
+	for a_device in devices:
+		device_type = a_device.pop('device_type')
+		driver = get_network_driver(device_type)
+		device = driver(**a_device)
+		napalm_conns.append(device)
+		print(" ********************  DEVICE START  **********************")
+		print("\nDevice created! Host: {}".format(a_device['hostname']))
+		device.open()
+		print("\nDevice connection opened! Type: {}".format(device_type))
+		bgp = device.get_bgp_neighbors()
+		pprint(bgp)
+
+		is_up = bgp['global']['peers'][bgp_neighbor]['is_up']
+		print("\nBGP peer, {}, is_up status is {}".format(bgp_neighbor, is_up))
+		print("\n")
+
+		print(" ---------------------  DEVICE END  -----------------------")
+		print("\n")
+
+
+
+"""
+device_type = devices.pop('device_type')
 	driver = get_network_driver(device_type)
 	device = driver(**devices)
 	napalm_conns.append(device)
@@ -105,21 +131,17 @@ def main():
 	bgp = device.get_bgp_neighbors()
 	pprint(bgp)
 
-	is_up = bgp['global']['peers']['10.220.88.38']['is_up']
-	print("BGP peer, 10.220.88.38, is_up status is {}".format(is_up))
+	is_up = bgp['global']['peers'][bgp_neighbor]['is_up']
+	print("\nBGP peer, {}, is_up status is {}".format(bgp_neighbor, is_up))
+	print("\n")
 
-
-
-
-	# for key in bgp.keys():
-	# 	neighbor_list.append(bgp[key][0]['hostname'])
-	# 	port_list.append(lldp[key][0]['port'])
 	print(" ---------------------  DEVICE END  -----------------------")
 	print("\n")
 	# print("\nThe bgp neighbors are:  {}".format(neighbor_list))
 	# print("\nThe ports are:  {}".format(port_list))
-		
-	
+"""
+
+
 
 if __name__ == "__main__":
 	main()
