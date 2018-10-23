@@ -101,7 +101,6 @@ def main():
 		print("\nLoading configuration merge file!")
 		# device.load_merge_candidate(config = hostname rtr1)
 		device.load_merge_candidate(filename = 'static_route.cfg')
-		print(device.get_interfaces())
 		diff = device.compare_config()
 		print("The difference between the current and staged configuration: \n{}".format(diff))
 		
