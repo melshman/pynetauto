@@ -112,6 +112,7 @@ def main():
 		if choice =='y':
 			print("Commiting... ")
 			device.commit_config()
+			print("Commit is complete!")
 			# print("verifiy route to 1.1.40.1 :  {}".format(device.get_route_to('1.1.40.1')))
 		else:
 			print("Discarding... ")
@@ -120,10 +121,10 @@ def main():
 			print("Confirming that no pending staged changes remain")
 			diff = device.compare_config()
 			print("The difference between the current and staged configuration: \n{}".format(diff))
-		# if diff == ""
-		# 	print("\nNo remaining staged changes")
-		# else:
-		# 	print("\nStaged changes still remain!")
+			if diff == "":
+				print("\nNo remaining staged changes")
+			else:
+				print("\nStaged changes still remain!")
 		print(" ---------------------  DEVICE END  -----------------------")
 
 
