@@ -99,7 +99,7 @@ def main():
 
 	with open(yaml_file) as f:
 		devices = yaml.load(f)
-		pprint(devices)
+		# pprint(devices)
 		print("\n\n")
 	# 	print("\n")
 	# 	for device in devices:
@@ -133,7 +133,7 @@ def main():
 	# 		print("\n\n")
 
 	for a_device in devices:
-		print(a_device)
+		# print(a_device)
 		for device_name, device_dict in a_device.items():
 			print("***************** START:  {}  *******************************".format(device_name))
 			print("\n")
@@ -144,16 +144,16 @@ def main():
 			# Set the password
 			device_dict['password'] = password
 			device = driver(**device_dict) 
-			napalm_conns.append(device)
+			# napalm_conns.append(device)
 			print("\nnapalm_comms is equal to: {} ".format(napalm_conns))
 			print("\n{} device created!".format(device_dict['hostname']))
 			device.open()
 			print("\nDevice connection opened of type {}!".format(device_type))
 			print("\n")
 			facts = device.get_facts()
-			print("the facts are: {} ".format(facts))
+			print("The Facts are:\n {} ".format(facts))
 			device_model = facts['model']
-			print("The Model of this device is: {}  ".format(device_model))
+			print("\nThe Model of this device is: {}  ".format(device_model))
 			print("\n")
 			print("***************** END:  {}  *******************************".format(device_name))
 			print("\n\n")
