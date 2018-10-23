@@ -95,32 +95,32 @@ def main():
 		print(" ********************  DEVICE START  **********************")
 		print("\nDevice created! Host: {}".format(a_device['hostname']))
 		device.open()
-		print(device.get_interfaces())
-		# print("\nDevice connection opened! Type: {}".format(device_type))
-		# # merge_cantidate exist????
-		# print("\nLoading configuration merge file!")
-		# # device.load_merge_candidate(config = hostname rtr1)
-		# device.load_merge_candidate(filename = 'static_route.cfg')
 		# print(device.get_interfaces())
-		# diff = device.compare_config()
-		# print("The difference between the current and staged configuration: \n{}".format(diff))
+		print("\nDevice connection opened! Type: {}".format(device_type))
+		# merge_cantidate exist????
+		print("\nLoading configuration merge file!")
+		# device.load_merge_candidate(config = hostname rtr1)
+		device.load_merge_candidate(filename = 'static_route.cfg')
+		print(device.get_interfaces())
+		diff = device.compare_config()
+		print("The difference between the current and staged configuration: \n{}".format(diff))
 		
-		# choice = input("\nWould you like to commit these changes? [y/n]:  ")
-		# if choice =='y':
-		# 	print("Commiting... ")
-		# 	device.commit_config()
-		# else:
-		# 	print("Discarding... ")
-		# 	device.discard_config()
+		choice = input("\nWould you like to commit these changes? [y/n]:  ")
+		if choice =='y':
+			print("Commiting... ")
+			device.commit_config()
+		else:
+			print("Discarding... ")
+			device.discard_config()
 
-		# 	print("Confirming that no pending staged changes remain")
-		# 	diff = device.compare_config()
-		# 	print("The difference between the current and staged configuration: \n{}".format(diff))
-		# # if diff == ""
-		# # 	print("\nNo remaining staged changes")
-		# # else:
-		# # 	print("\nStaged changes still remain!")
-		# print(" ---------------------  DEVICE END  -----------------------")
+			print("Confirming that no pending staged changes remain")
+			diff = device.compare_config()
+			print("The difference between the current and staged configuration: \n{}".format(diff))
+		# if diff == ""
+		# 	print("\nNo remaining staged changes")
+		# else:
+		# 	print("\nStaged changes still remain!")
+		print(" ---------------------  DEVICE END  -----------------------")
 
 
 
