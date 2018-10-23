@@ -23,6 +23,7 @@ NAPALM returned data structure).
 def main():
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 	password = getpass()
+	devices = ()
 
 	cisco_rtr1 = {
 		'hostname' : '184.105.247.70',
@@ -78,7 +79,7 @@ def main():
 	port_list = []
 	for a_device in devices:
 		# print("\n")
-		# pprint(a_device)
+		pprint(a_device)
 		print("\n")
 		device_type = a_device.pop('device_type')
 		driver = get_network_driver(device_type)
