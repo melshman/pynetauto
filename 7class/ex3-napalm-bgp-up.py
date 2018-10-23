@@ -72,7 +72,7 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-	devices = (cisco_rtr1) 
+	devices = (cisco_rtr1, cisco_rtr2) 
 
 	napalm_conns = []
 	neighbor_list = []
