@@ -108,6 +108,7 @@ def main():
 		if choice =='y':
 			print("Commiting... ")
 			device.commit_config()
+			print("verifiy route to 1.1.30.20:  {}".format(device.get_route_to(1.1.30.20)))
 		else:
 			print("Discarding... ")
 			device.discard_config()
