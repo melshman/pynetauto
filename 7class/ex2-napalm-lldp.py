@@ -75,28 +75,30 @@ def main():
 	napalm_conns = []
 
 	for a_device in devices:
-		print("\n")
-		pprint(a_device)
+		# print("\n")
+		# pprint(a_device)
 		print("\n")
 		device_type = a_device.pop('device_type')
 		driver = get_network_driver(device_type)
 		device = driver(**a_device)
 		napalm_conns.append(device)
 		print(" ********************  DEVICE START  **********************")
-		print("\n {} device created!".format(a_device['hostname']))
+		print("\n{} device created!".format(a_device['hostname']))
 		device.open()
 		print("\n Device connection opened of type: {}!".format(device_type))
 		lldp = device.get_lldp_neighbors()
-		print("\n")
-		pprint(lldp)
+		pprint("\n{}".format(lldp))
 		neighbor_list = []
+		port_list = []
 		for key in lldp.keys():
 			neighbor_list.append(lldp[key][0]['hostname'])
+			port_list.append(lldp[key][0]['port'])
 			print("\n")
 		print(" ---------------------  DEVICE END  -----------------------")
 		print("\n\n")
 		print("")
 	print("\nThe neighbors are:  {}".format(neighbor_list))
+	print("\nThe ports are:  {}".format(port_list))
 
 if __name__ == "__main__":
 	main()
