@@ -72,35 +72,59 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-	devices = (cisco_rtr1, cisco_rtr2) 
+	devices = (cisco_rtr1) 
+	print(devices)
+	## Note that we need to change the logic below because when only one item in the tuple
+	## the type(a_device) is no longer a dictionary, it is a 
 
 	napalm_conns = []
 	neighbor_list = []
 	port_list = []
-	for a_device in devices:
-		# print("\n")
-		pprint(a_device)
-		print(type(a_device))
-		print("\n")
-		# device_type = a_device.pop('device_type')
-		# driver = get_network_driver(device_type)
-		# device = driver(**a_device)
-		# napalm_conns.append(device)
-		# print(" ********************  DEVICE START  **********************")
-		# print("\nDevice created! Host: {}".format(a_device['hostname']))
-		# device.open()
-		# print("\nDevice connection opened! Type: {}".format(device_type))
-		# bgp = device.get_bgp_neighbors()
-		# print("\n{}\n".format(bgp))
+	if len(devices) > 1:
+		for a_device in devices:
+			# print("\n")
+			# pprint(a_device)
+			# print(type(a_device))
+			print("\n")
+			device_type = a_device.pop('device_type')
+			driver = get_network_driver(device_type)
+			device = driver(**a_device)
+			napalm_conns.append(device)
+			print(" ********************  DEVICE START  **********************")
+			print("\nDevice created! Host: {}".format(a_device['hostname']))
+			device.open()
+			print("\nDevice connection opened! Type: {}".format(device_type))
+			bgp = device.get_bgp_neighbors()
+			print("\n{}\n".format(bgp))
 
-		# # for key in bgp.keys():
-		# # 	neighbor_list.append(bgp[key][0]['hostname'])
-		# # 	port_list.append(lldp[key][0]['port'])
-		# print(" ---------------------  DEVICE END  -----------------------")
+			# for key in bgp.keys():
+			# 	neighbor_list.append(bgp[key][0]['hostname'])
+			# 	port_list.append(lldp[key][0]['port'])
+			print(" ---------------------  DEVICE END  -----------------------")
+			print("\n")
+	else:
 		# print("\n")
+		# pprint(a_device)
+		# print(type(a_device))
+		print("\n")
+		device_type = device.pop('device_type')
+		driver = get_network_driver(device_type)
+		device = driver(**device)
+		napalm_conns.append(device)
+		print(" ********************  DEVICE START  **********************")
+		print("\nDevice created! Host: {}".format(device['hostname']))
+		device.open()
+		print("\nDevice connection opened! Type: {}".format(device_type))
+		bgp = device.get_bgp_neighbors()
+		print("\n{}\n".format(bgp))
+
+		# for key in bgp.keys():
+		# 	neighbor_list.append(bgp[key][0]['hostname'])
+		# 	port_list.append(lldp[key][0]['port'])
+		print(" ---------------------  DEVICE END  -----------------------")
+		print("\n")
 	# print("\nThe bgp neighbors are:  {}".format(neighbor_list))
 	# print("\nThe ports are:  {}".format(port_list))
-
 if __name__ == "__main__":
 	main()
 
