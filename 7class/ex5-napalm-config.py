@@ -103,7 +103,7 @@ def main():
 		print("The difference between the current and staged configuration: \n{}".format(diff))
 		
 		choice = input("\nWould you like to commit these changes? [y/n]:  ")
-		if choice ='y':
+		if choice =='y':
 			print("Commiting... ")
 			device.commit_config()
 		else:
@@ -112,7 +112,7 @@ def main():
 
 		print("Confirming that no pending changes remain")
 		diff = device.compare_config()
-		if diff = ""
+		if diff == ""
 			print("\nNo remaining staged changes")
 		else:
 			print("\nStaged changes still remain!")
