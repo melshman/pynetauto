@@ -144,12 +144,11 @@ def main():
 			# Set the password
 			device_dict['password'] = password
 			device = driver(**device_dict) 
-			# napalm_conns.append(device)
-			print("\nnapalm_comms is equal to: {} ".format(napalm_conns))
+			napalm_conns.append(device)
+			# print("\nnapalm_comms is equal to: {} ".format(napalm_conns))
 			print("\n{} device created!".format(device_dict['hostname']))
 			device.open()
-			print("\nDevice connection opened of type {}!".format(device_type))
-			print("\n")
+			print("\nDevice connection opened of type: {}!".format(device_type))
 			facts = device.get_facts()
 			print("The Facts are:\n {} ".format(facts))
 			device_model = facts['model']
