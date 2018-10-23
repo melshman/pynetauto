@@ -18,6 +18,12 @@ Parse the returned data structure to and verify that the BGP peer
 to 10.220.88.38 is in the established state ('is_up' field in the 
 NAPALM returned data structure).
 
+{'global': {'router_id': '10.220.88.20', 'peers': {'10.220.88.38': 
+{'local_as': 42, 'remote_as': 44, 'remote_id': '10.220.88.38', 'is_up': True, 
+'is_enabled': True, 'description': '', 'uptime': 1641600, 
+'address_family': {'ipv4': {'received_prefixes': 0, 'accepted_prefixes': 0, 
+'sent_prefixes': 0}}}}}}
+
 """
 
 def main():
@@ -97,7 +103,13 @@ def main():
 	device.open()
 	print("\nDevice connection opened! Type: {}".format(device_type))
 	bgp = device.get_bgp_neighbors()
-	print("\n{}\n".format(bgp))
+	pprint(bgp)
+
+	is_up = bgp['global']['peers']['10.220.88.38']['is_up']
+	print("BGP peer, 10.220.88.38, is_up status is {}".format(is_up))
+
+
+
 
 	# for key in bgp.keys():
 	# 	neighbor_list.append(bgp[key][0]['hostname'])
