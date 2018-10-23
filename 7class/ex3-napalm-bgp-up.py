@@ -82,6 +82,8 @@ def main():
 	port_list = []
 	pprint(devices)
 	print(type(devices))
+	print(len(devices))
+
 	# if len(devices) == 1:
 	# 	print("\n")
 	# 	pprint(devices)
