@@ -150,10 +150,9 @@ def main():
 			device.open()
 			print("\nDevice connection opened of type: {}!".format(device_type))
 			facts = device.get_facts()
-			print("The Facts are:\n {} ".format(facts))
+			print("\nThe Facts are: {} ".format(facts))
 			device_model = facts['model']
 			print("\nThe Model of this device is: {}  ".format(device_model))
-			print("\n")
 			print("***************** END:  {}  *******************************".format(device_name))
 			print("\n\n")
 
