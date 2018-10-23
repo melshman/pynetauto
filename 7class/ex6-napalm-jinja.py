@@ -68,7 +68,7 @@ generating a NotImplementedError exception that you should gracefully catch).
 
 """
 
-def ping_google():
+def ping_google(device):
 	"""Use NAPALM to ping google.com to validate DNS resolution."""
 	print()
 	print(">>>Test ping to google.com")
