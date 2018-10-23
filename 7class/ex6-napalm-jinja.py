@@ -70,24 +70,24 @@ generating a NotImplementedError exception that you should gracefully catch).
 
 def ping_google():
 	"""Use NAPALM to ping google.com to validate DNS resolution."""
-    print()
-    print(">>>Test ping to google.com")
-    try:
-        ping_output = device.ping(destination='google.com')
-    except NotImplementedError:
-        print("Ping failed: ping() method not implemented")
-        return
-    if not ping_output == {}:
-        probes_sent = int(ping_output['success']['probes_sent'])
-        packet_loss = int(ping_output['success']['packet_loss'])
-        successful_pings = probes_sent - packet_loss
-        print("Probes sent: {}".format(probes_sent))
-        print("Packet loss: {}".format(packet_loss))
-        if successful_pings > 0:
-            print("Pings Successful: {}".format(successful_pings))
-            return
+	print()
+	print(">>>Test ping to google.com")
+	try:
+		ping_output = device.ping(destination='google.com')
+	except NotImplementedError:
+		print("Ping failed: ping() method not implemented")
+		return
+	if not ping_output == {}:
+		probes_sent = int(ping_output['success']['probes_sent'])
+		packet_loss = int(ping_output['success']['packet_loss'])
+		successful_pings = probes_sent - packet_loss
+		print("Probes sent: {}".format(probes_sent))
+		print("Packet loss: {}".format(packet_loss))
+		if successful_pings > 0:
+			print("Pings Successful: {}".format(successful_pings))
+			return
 
-    print("Ping failed")
+	print("Ping failed")
 
 
 
@@ -149,9 +149,9 @@ def main():
 	napalm_conns = []
 
 	template_vars = {
-            'dns1': '1.1.1.1',
-            'dns2': '8.8.8.8',
-        }
+			'dns1': '1.1.1.1',
+			'dns2': '8.8.8.8',
+			}
 
 	base_path = '/home/tarmstrong/projects/pynetauto/7class'
 
