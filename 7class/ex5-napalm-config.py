@@ -112,10 +112,11 @@ def main():
 
 		print("Confirming that no pending changes remain")
 		diff = device.compare_config()
-		if diff == ""
-			print("\nNo remaining staged changes")
-		else:
-			print("\nStaged changes still remain!")
+		print(diff)
+		# if diff == ""
+		# 	print("\nNo remaining staged changes")
+		# else:
+		# 	print("\nStaged changes still remain!")
 		print(" ---------------------  DEVICE END  -----------------------")
 
 
