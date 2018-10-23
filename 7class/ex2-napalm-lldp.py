@@ -88,7 +88,8 @@ def main():
 		device.open()
 		print("\nDevice connection opened! Type: {}".format(device_type))
 		lldp = device.get_lldp_neighbors()
-		print("\n{}".format(lldp))
+		print("\n{}\n".format(lldp))
+
 		for key in lldp.keys():
 			neighbor_list.append(lldp[key][0]['hostname'])
 			port_list.append(lldp[key][0]['port'])
