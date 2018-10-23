@@ -68,6 +68,30 @@ generating a NotImplementedError exception that you should gracefully catch).
 
 """
 
+def ping_google():
+	"""Use NAPALM to ping google.com to validate DNS resolution."""
+    print()
+    print(">>>Test ping to google.com")
+    try:
+        ping_output = device.ping(destination='google.com')
+    except NotImplementedError:
+        print("Ping failed: ping() method not implemented")
+        return
+    if not ping_output == {}:
+        probes_sent = int(ping_output['success']['probes_sent'])
+        packet_loss = int(ping_output['success']['packet_loss'])
+        successful_pings = probes_sent - packet_loss
+        print("Probes sent: {}".format(probes_sent))
+        print("Packet loss: {}".format(packet_loss))
+        if successful_pings > 0:
+            print("Pings Successful: {}".format(successful_pings))
+            return
+
+    print("Ping failed")
+
+
+
+
 def main():
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 	password = getpass()
@@ -119,12 +143,19 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-	devices = (cisco_rtr1, cisco_rtr2)
+	# devices = (cisco_rtr1, cisco_rtr2)
+	devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, cisco_nxos)
 
-	
 	napalm_conns = []
-	neighbor_list = []
-	port_list = []
+
+	template_vars = {
+            'dns1': '1.1.1.1',
+            'dns2': '8.8.8.8',
+        }
+
+	base_path = '/home/tarmstrong/projects/pynetauto/7class'
+
+
 	for a_device in devices:
 		# print("\n")
 		# pprint(a_device)
@@ -137,16 +168,12 @@ def main():
 		print("\nDevice created! Host: {}".format(a_device['hostname']))
 		device.open()
 		print("\nDevice connection opened! Type: {}".format(device_type))
-		lldp = device.get_lldp_neighbors()
-		print("\n{}\n".format(lldp))
+		
+		device.load_template("dns", template_path=base_path, **template_vars)
+        print(device.compare_config())
+        device.commit_config()
 
-		for key in lldp.keys():
-			neighbor_list.append(lldp[key][0]['hostname'])
-			port_list.append(lldp[key][0]['port'])
-		print(" ---------------------  DEVICE END  -----------------------")
-		print("\n")
-	print("\nThe neighbors are:  {}".format(neighbor_list))
-	print("\nThe ports are:  {}".format(port_list))
+
 
 if __name__ == "__main__":
 	main()
