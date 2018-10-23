@@ -93,8 +93,8 @@ def main():
 
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 	password = getpass()
-	yaml_file = 'my_devices.yaml'
-
+	# yaml_file = 'my_devices.yaml'
+	yaml_file = 'kb.yaml'
 	napalm_conns = []
 
 	with open(yaml_file) as f:
