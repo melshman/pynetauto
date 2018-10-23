@@ -13,29 +13,13 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 """
 
-4. Using NAPALM retrieve get_interfaces from Arista switch2 (pynet_sw2). 
-Find all of the interfaces that are in an UP-UP state (is_enabled=True, 
-and is_up=True). Print all of these UP-UP interfaces to standard output.
-
-output sample
-{'Ethernet1': {'description': '',
-               'is_enabled': True,
-               'is_up': True,
-               'last_flapped': 1538591527.2426357,
-               'mac_address': '52:54:AB:02:A1:11',
-               'speed': 0},
- 'Ethernet2': {'description': '',
-               'is_enabled': True,
-               'is_up': True,
-               'last_flapped': 1538591527.2428465,
-               'mac_address': '52:54:AB:02:A1:12',
-               'speed': 0},
- 'Ethernet3': {'description': '',
-               'is_enabled': True,
-               'is_up': True,
-               'last_flapped': 1538591527.2430475,
-               'mac_address': '52:54:AB:02:A1:13',
-               'speed': 0},
+5. Using NAPALM and the one of the Cisco routers perform the following config operations:
+a. Stage a change adding a /32 static route (merge operation). Use something in 1.1.X.X/32.
+b. Perform a compare_config operation to see your staged change.
+c. Discard your change.
+d. Verify compare_config shows no pending changes (after your discard operation).
+e. Re-stage your change adding a /32 static route (merge operation).
+f. Commit your change.
 
 """
 
@@ -91,8 +75,7 @@ def main():
 
 
 	# devices = (cisco_rtr1, cisco_rtr2, arista_sw1, arista_sw2, jnpr_srx1, cisco_nxos)
-	up_up = []
-	devices = (arista_sw2,) 
+	devices = (cisco_rtr1,) 
 	print(devices)
 	## Note that we need to change the logic below because when only one item in the tuple
 	## the type(a_device) is no longer a dictionary, it is a 
@@ -113,25 +96,29 @@ def main():
 		print("\nDevice created! Host: {}".format(a_device['hostname']))
 		device.open()
 		print("\nDevice connection opened! Type: {}".format(device_type))
-		intfs = device.get_interfaces()
-		pprint(intfs)
-		for intf, intf_dict in intfs.items():
-			print(intf)
-			print(intf_dict)
-			print("---------")
-			print("\n")
-			intf_up = intf_dict['is_up']
-			inttf_enabled = intf_dict['is_enabled']
-			if intf_up and inttf_enabled:
-				up_up.append(intf)
+		# merge_cantidate exist????
+		print("\nLoading configuration merge file!")
+		device.load.merge(static_route.cfg)
+		diff = device.compare_config()
+		print("The difference between the current and staged configuration: \n{}".format(diff))
+		
+		choice = input("\nWould you like to commit these changes? [y/n]:  ")
+		if choice ='y':
+			print("Commiting... ")
+			device.commit_config()
+		else:
+			print("Discarding... ")
+			device.discard_config()
 
-		# is_up = bgp['global']['peers'][bgp_neighbor]['is_up']
-		# print("\nBGP peer, {}, is_up status is {}".format(bgp_neighbor, is_up))
-		print("\n")
-
+		print("Confirming that no pending changes remain")
+		diff = device.compare_config()
+		if diff = ""
+			print("\nNo remaining staged changes")
+		else:
+			print("\nStaged changes still remain!")
 		print(" ---------------------  DEVICE END  -----------------------")
-		print("\n")
-	print(up_up)
+
+
 
 
 """
