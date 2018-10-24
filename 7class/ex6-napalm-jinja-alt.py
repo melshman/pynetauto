@@ -187,7 +187,7 @@ def main():
 			device.open()
 			print("\nDevice connection opened! Type: {}".format(device_type))
 			
-			device.load_merge_candidate(filename = 'dns.txt')
+			device.load_merge_candidate(filename = dns_file)
 			print(device.compare_config())
 			device.commit_config()
 
