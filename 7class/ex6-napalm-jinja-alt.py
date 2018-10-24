@@ -171,7 +171,7 @@ def main():
 		jinja_env = Environment(undefined = StrictUndefined)
 		jinja_env.loader = FileSystemLoader(template_path)
 		template = jinja_env.get_template(template_file)
-		dns_config = template.render(template_vars)  ## why not (**template_vars)  ????
+		dns_config = template.render(**template_vars)  ## why not (**template_vars)  ????
 
 		with open(dns_file, 'w') as f:
 			f.write(dns_config)
