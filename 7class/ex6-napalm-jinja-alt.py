@@ -177,7 +177,7 @@ def main():
 			f.write(dns_config)
 
 		print(" ********************  DEVICE START  **********************")
-		print("The config created is as such: {}\n".format(dns_config))
+		print("The config created is as such: \n{}".format(dns_config))
 		choice = input("Continue to commit changes? (y/n)")
 		if choice == "y" or "yes":
 			driver = get_network_driver(device_type)
@@ -187,7 +187,7 @@ def main():
 			device.open()
 			print("\nDevice connection opened! Type: {}".format(device_type))
 			
-			device.load_merge_candidate(filename = 'dns.j2')
+			device.load_merge_candidate(filename = 'dns.txt')
 			print(device.compare_config())
 			device.commit_config()
 
