@@ -173,8 +173,8 @@ def main():
 		template = jinja_env.get_template(template_file)
 		dns_config = template.render(template_vars)  ## why not (**template_vars)  ????
 
-        with open(dns_file, 'w') as f:
-            f.write(dns_config)
+		with open(dns_file, 'w') as f:
+			f.write(dns_config)
 
 		print(" ********************  DEVICE START  **********************")
 		print("The config created is as such: {}\n".format(dns_config))
