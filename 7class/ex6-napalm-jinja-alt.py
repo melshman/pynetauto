@@ -186,7 +186,7 @@ def main():
 			print("\nDevice created! Host: {}".format(a_device['hostname']))
 			device.open()
 			print("\nDevice connection opened! Type: {}".format(device_type))
-			
+			print("Loading template")
 			device.load_merge_candidate(filename = dns_file)
 			print(device.compare_config())
 			device.commit_config()
