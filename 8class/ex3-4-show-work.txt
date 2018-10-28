@@ -1,0 +1,110 @@
+
+'''
+
+3. Create two new test NetworkDevices in the database. Use both direct object creation and the .get_or_create() method to create the devices.
+
+4. Remove the two objects created in the previous exercise from the database.
+
+
+
+'''
+
+
+
+
+In [54]: new_device1 = NetworkDevice(
+    ...:     device_name = '1111',
+    ...:     device_type = 'whitebox',
+    ...:     ip_address = '1.1.1.1',
+    ...:     port = 22,
+    ...:     )
+    ...:
+
+In [55]: new_device1.save
+Out[55]: <bound method Model.save of <NetworkDevice: 1111>>
+
+In [56]: new_device2 = NetworkDevice(
+    ...:     device_name = '2222',
+    ...:     device_type = 'whitebox',
+    ...:     ip_address = '2.2.2.2',
+    ...:     port = 22,
+    ...:     )
+    ...:
+
+In [57]: new_device2
+Out[57]: <NetworkDevice: 2222>
+
+In [58]: new_device1.ip_address
+Out[58]: '1.1.1.1'
+
+In [59]: new_device2.save()
+
+In [60]: new_device1.save()
+
+In [61]: for device in net_devices:
+    ...:     print(device)
+    ...:
+pynet-rtr1
+pynet-rtr2
+pynet-sw1
+pynet-sw2
+pynet-sw3
+pynet-sw4
+juniper-srx
+
+In [62]: net_devices = NetworkDevice.objects.all()
+
+In [63]: for device in net_devices:
+    ...:     print(device)
+    ...:
+pynet-rtr1
+pynet-rtr2
+pynet-sw1
+pynet-sw2
+pynet-sw3
+pynet-sw4
+juniper-srx
+2222
+1111
+
+In [64]: new.device1.delete()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-64-a903f1f3ba7b> in <module>()
+----> 1 new.device1.delete()
+
+NameError: name 'new' is not defined
+
+In [65]: new_device1.delete()
+Out[65]: (1, {'net_system.NetworkDevice': 1})
+
+In [66]: new_device2.delete()
+Out[66]: (1, {'net_system.NetworkDevice': 1})
+
+In [67]: for device in net_devices:
+    ...:     print(device)
+    ...:
+pynet-rtr1
+pynet-rtr2
+pynet-sw1
+pynet-sw2
+pynet-sw3
+pynet-sw4
+juniper-srx
+2222
+1111
+
+In [68]: net_devices = NetworkDevice.objects.all()
+
+In [69]: for device in net_devices:
+    ...:     print(device)
+    ...:
+pynet-rtr1
+pynet-rtr2
+pynet-sw1
+pynet-sw2
+pynet-sw3
+pynet-sw4
+juniper-srx
+
+In [70]:

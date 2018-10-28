@@ -1,0 +1,43 @@
+'''
+
+2. Set the vendor field of each NetworkDevice to the appropriate vendor. Save this field to the database.
+
+
+'''
+
+
+In [41]: net_devices[0].vendor = 'cisco'
+
+In [42]: net_devices[0].vendor
+Out[42]: 'cisco'
+
+In [43]: net_devices[1].vendor
+
+In [44]: net_devices[1].vendor = 'cisco'
+
+In [45]: net_devices[2].vendor = 'arista'
+
+In [46]: net_devices[3].vendor = 'arista'
+
+In [47]: net_devices[4].vendor = 'arista'
+
+In [48]: net_devices[5].vendor = 'arista'
+
+In [49]: net_devices[6].vendor = 'juniper'
+
+In [50]: for a_device in net_devices:
+    ...:     print(a_device.device_name, a_device.device_type, a_device.vendor)
+    ...:     a_device.save()
+    ...:
+pynet-rtr1 cisco_ios cisco
+pynet-rtr2 cisco_ios cisco
+pynet-sw1 arista_eos arista
+pynet-sw2 arista_eos arista
+pynet-sw3 arista_eos arista
+pynet-sw4 arista_eos arista
+juniper-srx juniper juniper
+
+
+or 
+In [53]: for device in net_devices:
+    ...:     device.save()

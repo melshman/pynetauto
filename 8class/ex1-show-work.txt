@@ -1,0 +1,269 @@
+
+'''
+
+1. Initialize your Django database. Add the seven NetworkDevice objects and two Credentials objects into your database. After this initialization, you should be able to do the following (from the ~/DJANGOX/djproject directory):
+
+$ python manage.py shell
+
+>>> from net_system.models import NetworkDevice, Credentials
+>>> net_devices = NetworkDevice.objects.all()
+>>> net_devices
+[<NetworkDevice: pynet-rtr1>, <NetworkDevice: pynet-sw1>, <NetworkDevice: pynet-sw2>, <NetworkDevice: pynet-sw3>, <NetworkDevice: pynet-sw4>, <NetworkDevice: juniper-srx>, <NetworkDevice: pynet-rtr2>]
+
+>>> creds = Credentials.objects.all()
+>>> creds
+[<Credentials: pyclass>, <Credentials: admin1>]
+
+    b. Update the NetworkDevice objects such that each NetworkDevice links to the correct Credentials.
+
+
+'''
+
+
+
+
+
+
+
+tarmstrong@ip-172-30-0-146:~/DJANGOX/djproject$ python manage.py shell
+Python 3.6.5 (default, Apr 26 2018, 00:14:31)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.5.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from net_system.models import NetworkDevice
+
+In [2]: net_devices = NetworkDevice.objects.all()
+
+In [3]: net_devices
+Out[3]: <QuerySet [<NetworkDevice: pynet-rtr1>, <NetworkDevice: pynet-rtr2>, <NetworkDevice: pynet-sw1>, <NetworkDevice: pynet-sw2>, <NetworkDevice: pynet-sw3>, <NetworkDevice: pynet-sw4>, <NetworkDevice: juniper-srx>]>
+
+In [4]: for a_device in net_devices.iter():
+   ...:     print(a_device)
+   ...:
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-4-1ea77b87eda3> in <module>()
+----> 1 for a_device in net_devices.iter():
+      2     print(a_device)
+      3
+
+AttributeError: 'QuerySet' object has no attribute 'iter'
+
+In [5]: for a_device in net_devices:
+   ...:     print(a_device)
+   ...:
+pynet-rtr1
+pynet-rtr2
+pynet-sw1
+pynet-sw2
+pynet-sw3
+pynet-sw4
+juniper-srx
+
+In [6]: for a_device in net_devices:
+   ...:     for k,v in a_device.iter()
+  File "<ipython-input-6-7076798fce8f>", line 2
+    for k,v in a_device.iter()
+                              ^
+SyntaxError: invalid syntax
+
+
+In [7]: for a_device in net_devices:
+   ...:     for k,v in a_device.iter():
+   ...:         print(k,v)
+   ...:
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-7-158366a4ac6c> in <module>()
+      1 for a_device in net_devices:
+----> 2     for k,v in a_device.iter():
+      3         print(k,v)
+      4
+
+AttributeError: 'NetworkDevice' object has no attribute 'iter'
+
+In [8]: for a_device in net_devices:
+   ...:     for k,v in a_device:
+   ...:         print(k,v)
+   ...:
+   ...:
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+<ipython-input-8-1f1a0f297ddd> in <module>()
+      1 for a_device in net_devices:
+----> 2     for k,v in a_device:
+      3         print(k,v)
+      4
+      5
+
+TypeError: 'NetworkDevice' object is not iterable
+
+In [9]: for a_device in net_devices:
+   ...:     for k,v in a_device.interate():
+   ...:         print(k,v)
+   ...:
+   ...:
+   ...:
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-9-4aa25d7bf3a8> in <module>()
+      1 for a_device in net_devices:
+----> 2     for k,v in a_device.interate():
+      3         print(k,v)
+      4
+      5
+
+AttributeError: 'NetworkDevice' object has no attribute 'interate'
+
+In [10]: for a_device in net_devices:
+    ...:     for k,v in a_device.interate():
+    ...:         print(k,v)
+    ...:
+    ...:
+    ...:
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-10-4aa25d7bf3a8> in <module>()
+      1 for a_device in net_devices:
+----> 2     for k,v in a_device.interate():
+      3         print(k,v)
+      4
+      5
+
+AttributeError: 'NetworkDevice' object has no attribute 'interate'
+
+In [11]:
+
+In [11]: from net_system.models import Credentials
+
+In [12]: net_devices
+Out[12]: <QuerySet [<NetworkDevice: pynet-rtr1>, <NetworkDevice: pynet-rtr2>, <NetworkDevice: pynet-sw1>, <NetworkDevice: pynet-sw2>, <NetworkDevice: pynet-sw3>, <NetworkDevice: pynet-sw4>, <NetworkDevice: juniper-srx>]>
+
+In [13]: creds = Credentials.objects.all()
+
+In [14]: creds
+Out[14]: <QuerySet [<Credentials: pyclass>, <Credentials: admin1>]>
+
+In [15]: for a_device in net_devices
+  File "<ipython-input-15-322876084dad>", line 1
+    for a_device in net_devices
+                               ^
+SyntaxError: invalid syntax
+
+
+In [16]: for a_device in net_devices:
+    ...:     print(a_device)
+    ...:
+pynet-rtr1
+pynet-rtr2
+pynet-sw1
+pynet-sw2
+pynet-sw3
+pynet-sw4
+juniper-srx
+
+In [17]: cisco1 = net_devices[0]
+
+In [18]: cisco1
+Out[18]: <NetworkDevice: pynet-rtr1>
+
+In [19]: cisco1.ip
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-19-7a2a55dde7df> in <module>()
+----> 1 cisco1.ip
+
+AttributeError: 'NetworkDevice' object has no attribute 'ip'
+
+In [20]: cisco1.device_type
+Out[20]: 'cisco_ios'
+
+In [21]: cisco1.ip_address
+Out[21]: '184.105.247.70'
+
+In [22]: creds
+Out[22]: <QuerySet [<Credentials: pyclass>, <Credentials: admin1>]>
+
+In [23]: std_creds = creds[0]
+
+In [24]: std_creds
+Out[24]: <Credentials: pyclass>
+
+In [25]: for a device in devices:
+  File "<ipython-input-25-77c9ae84ec78>", line 1
+    for a device in devices:
+               ^
+SyntaxError: invalid syntax
+
+
+In [26]: for a_device in devices:
+    ...:     a_device.credentials = std_creds
+    ...:
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-26-7a6a72c45d5b> in <module>()
+----> 1 for a_device in devices:
+      2     a_device.credentials = std_creds
+      3
+
+NameError: name 'devices' is not defined
+
+In [27]: for a_device in net_devices:
+    ...:     a_device.credentials = std_creds
+    ...:
+    ...:
+
+In [28]: cisco1
+Out[28]: <NetworkDevice: pynet-rtr1>
+
+In [29]: cisco1.credentials
+Out[29]: <Credentials: pyclass>
+
+In [30]: cisco1.credentials.username
+Out[30]: 'pyclass'
+
+In [31]: cisco1.credentials.password
+Out[31]: '88newclass'
+
+In [32]: netdevices[1].credentials.username
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-32-bd2e840b8b19> in <module>()
+----> 1 netdevices[1].credentials.username
+
+NameError: name 'netdevices' is not defined
+
+In [33]: net_devices[1].credentials.username
+Out[33]: 'pyclass'
+
+In [34]: for a_device in net_devices:
+    ...:     a_device.device_name, a_device.credentials
+    ...:
+    ...:
+    ...:
+
+In [35]: for a_device in net_devices:
+    ...:     print(a_device.device_name, a_device.credentials)
+    ...:
+    ...:
+    ...:
+    ...:
+pynet-rtr1 pyclass
+pynet-rtr2 pyclass
+pynet-sw1 pyclass
+pynet-sw2 pyclass
+pynet-sw3 pyclass
+pynet-sw4 pyclass
+juniper-srx pyclass
+
+In [36]: std_creds.networkdevice_set.all()
+Out[36]: <QuerySet []>
+
+In [37]: std_creds
+Out[37]: <Credentials: pyclass>
+
+In [38]: std_creds.networkdevice_set.all()
+Out[38]: <QuerySet []>
+
+In [39]: net_devices
+Out[39]: <QuerySet [<NetworkDevice: pynet-rtr1>, <NetworkDevice: pynet-rtr2>, <NetworkDevice: pynet-sw1>, <NetworkDevice: pynet-sw2>, <NetworkDevice: pynet-sw3>, <NetworkDevice: pynet-sw4>, <NetworkDevice: juniper-srx>]>
