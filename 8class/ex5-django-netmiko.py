@@ -1,15 +1,18 @@
 #!/user/bin/env python
 
-from __future__ import print_function
-from __future__ import unicode_literals
+from __future__ import print_function, unicode_literals
 
 from getpass import getpass
 from pprint import pprint
 
-from __future__ import print_function, unicode_literals
+from datetime import datetime
+from netmiko import ConnectHandler
+
 import django
-jango.setup()
-from net_system.models import NetworkDevice, Credentials
+django.setup()
+
+from net_system.models import NetworkDevice     # noqa
+
 
 '''
 
@@ -19,23 +22,35 @@ required to do this.
 
 '''
 
+
+def show_version(a_device):
+    """Execute show version command using Netmiko."""
+    creds = a_device.credentials
+    remote_conn = ConnectHandler(device_type=a_device.device_type,
+                                 ip=a_device.ip_address,
+                                 username=creds.username,
+                                 password=creds.password,
+                                 port=a_device.port, secret='')
+    print()
+    print('#' * 80)
+    print(remote_conn.send_command_expect("show version"))
+    print('#' * 80)
+    print()
+
+
 def main():
-	net_devices = NetworkDevice.objects.all()
-	start_time = datetime.now()
-	print("\n{}".format(start_time))
-	print("\n")
-	for a_device in net_devices:
-		print(a_device)
-		net_connect = ConnectHandler(**a_device)
-		config_commands = ['show version']
-		output = net_connect.send_config_set(config_commands)
-		print("\n\n****************************\n")
-		print("{}".format(output))
-		print("\n\n----------------------------\n")
-	end_time = datetime.now()
-	elapsed = end_time - start_time
-	print("\n{}".format(elapsed)
+    """
+    Use Netmiko to connect to each of the devices in the database. Execute
+    'show version' on each device.
+    """
+    start_time = datetime.now()
+    devices = NetworkDevice.objects.all()
+    for a_device in devices:
+        show_version(a_device)
+
+    elapsed_time = datetime.now() - start_time
+    print("Elapsed time: {}".format(elapsed_time))
 
 
 if __name__ == "__main__":
-	main()
+    main()
