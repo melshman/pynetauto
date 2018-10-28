@@ -6,7 +6,6 @@ from __future__ import unicode_literals
 from getpass import getpass
 from pprint import pprint
 
-from 
 from __future__ import print_function, unicode_literals
 import django
 jango.setup()
