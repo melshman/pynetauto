@@ -55,8 +55,8 @@ def main():
     
     main_thread = threading.currentThread()
     for some_thread in threading.enumerate():
-    	if some_thread != main_thread:
-    	    print(some_thread)
+        if some_thread != main_thread:
+            print(some_thread)
             some_thread.join()
 
     elapsed_time = datetime.now() - start_time
