@@ -13,7 +13,7 @@ django.setup()
 
 from net_system.models import NetworkDevice
 
-import threading
+from multiprocessing import Process, current_process, Queue
 
 '''
 
@@ -48,18 +48,17 @@ def main():
     """
     start_time = datetime.now()
     devices = NetworkDevice.objects.all()
-    for a_device in devices:
-        print("\n".format(a_device)
+    procs = []
 
     for a_device in devices:
-        my_thread = threading.Thread(target=show_version, args=(a_device,))
-        my_thread.start()
+        my_proc = Process(target=show_version, args=(a_device,))
+        my_proc.start()
+        procs.append(my_proc)
     
-    main_thread = threading.currentThread()
-    for some_thread in threading.enumerate():
+    for a_proc in procs:
         if some_thread != main_thread:
-            print(some_thread)
-            some_thread.join()
+            print(a_proc)
+            a_proc.join()
 
     elapsed_time = datetime.now() - start_time
     print("Elapsed time: {}".format(elapsed_time))
