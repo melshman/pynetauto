@@ -15,7 +15,6 @@ from net_system.models import NetworkDevice
 
 import threading
 
-
 '''
 
 6. Use threads and Netmiko to execute 'show version' 
