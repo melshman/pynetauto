@@ -32,11 +32,10 @@ def main():
 		print("\n\n****************************\n")
 		print("{}".format(output))
 		print("\n\n----------------------------\n")
-	end_time = datetim.now()
+	end_time = datetime.now()
 	elapsed = end_time - start_time
 	print("\n{}".format(elapsed)
 
 
 if __name__ == "__main__":
 	main()
-
