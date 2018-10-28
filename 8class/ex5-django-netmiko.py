@@ -37,7 +37,6 @@ def main():
 	print("\n{}".format(elapsed)
 
 
-
 if __name__ == "__main__":
-    main()
+	main()
 
