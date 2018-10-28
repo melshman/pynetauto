@@ -64,10 +64,10 @@ def main():
         a_proc.join()
 
     while not q.empty():
-    	my_dict = q.get()
-    	for k,v in my_dict.iteritems():
-    		print(k)
-    		print(v)
+        my_dict = q.get()
+        for k,v in my_dict.iteritems():
+            print(k)
+            print(v)
 
     elapsed_time = datetime.now() - start_time
     print("Elapsed time: {}".format(elapsed_time))
