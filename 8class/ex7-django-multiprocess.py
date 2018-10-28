@@ -56,9 +56,8 @@ def main():
         procs.append(my_proc)
     
     for a_proc in procs:
-        if some_thread != main_thread:
-            print(a_proc)
-            a_proc.join()
+        print(a_proc)
+        a_proc.join()
 
     elapsed_time = datetime.now() - start_time
     print("Elapsed time: {}".format(elapsed_time))
