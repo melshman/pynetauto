@@ -40,6 +40,7 @@ def show_version(a_device, q):
     output += remote_conn.send_command_expect("show version") + "\n"
     output += ('#' * 80) + "\n" 
 
+    ## this assigns the vaule of ouput (type dict) to the 'device_name' key
     output_dict[a_device.device_name] = output
     q.put(output_dict)
 
@@ -66,7 +67,8 @@ def main():
     while not q.empty():
         my_dict = q.get()
         #print(my_dict)
-        for k,v in my_dict.items():
+        for k,v in my_dict.iteritems():
+        # for k,v in my_dict.items():
             print(k)
             print(v)
 
