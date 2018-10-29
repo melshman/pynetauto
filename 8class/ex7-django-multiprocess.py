@@ -65,7 +65,7 @@ def main():
 
     while not q.empty():
         my_dict = q.get()
-        for k,v in my_dict.iteritems():
+        for k,v in my_dict.items():
             print(k)
             print(v)
 
