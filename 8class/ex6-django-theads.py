@@ -49,7 +49,7 @@ def main():
     start_time = datetime.now()
     devices = NetworkDevice.objects.all()
     
-    for device in devices:
+    for a_device in devices:
         print("\n".format(a_device))
 
     for a_device in devices:
