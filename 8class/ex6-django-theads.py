@@ -48,18 +48,19 @@ def main():
     """
     start_time = datetime.now()
     devices = NetworkDevice.objects.all()
-    for a_device in devices:
-        print("\n".format(a_device)
+    
+    # for a_device in devices:
+    #     print("\n".format(a_device)
 
     for a_device in devices:
         my_thread = threading.Thread(target=show_version, args=(a_device,))
         my_thread.start()
     
     main_thread = threading.currentThread()
-    for some_thread in threading.enumerate():
-        if some_thread != main_thread:
-            print(some_thread)
-            some_thread.join()
+    for a_thread in threading.enumerate():
+        if a_thread != main_thread:
+            print(a_thread)
+            a_thread.join()
 
     elapsed_time = datetime.now() - start_time
     print("Elapsed time: {}".format(elapsed_time))
