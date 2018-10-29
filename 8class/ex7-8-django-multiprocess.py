@@ -67,8 +67,8 @@ def main():
     while not q.empty():
         my_dict = q.get()
         #print(my_dict)
-        for k,v in my_dict.iteritems():
-        # for k,v in my_dict.items():
+        # for k,v in my_dict.iteritems():  --- ONLY WORKS IN Python 2; use .items() in python 3.
+        for k,v in my_dict.items():
             print(k)
             print(v)
 

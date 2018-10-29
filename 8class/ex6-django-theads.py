@@ -39,6 +39,7 @@ def show_version(a_device):
     print(remote_conn.send_command_expect("show version"))
     print('#' * 80)
     print()
+    remote_conn.disconnect()
 
 
 def main():
@@ -61,6 +62,7 @@ def main():
         if a_thread != main_thread:
             print(a_thread)
             a_thread.join()
+
 
     elapsed_time = datetime.now() - start_time
     print("Elapsed time: {}".format(elapsed_time))
