@@ -49,8 +49,8 @@ def main():
     start_time = datetime.now()
     devices = NetworkDevice.objects.all()
     
-    # for a_device in devices:
-    #     print("\n".format(a_device)
+    for device in devices:
+        print("\n".format(a_device))
 
     for a_device in devices:
         my_thread = threading.Thread(target=show_version, args=(a_device,))
