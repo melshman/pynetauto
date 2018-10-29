@@ -38,7 +38,7 @@ def show_version(a_device, q):
     
     output = ('#' * 80) + "\n" 
     output += remote_conn.send_command_expect("show version") + "\n"
-    output = ('#' * 80) + "\n" 
+    output += ('#' * 80) + "\n" 
 
     output_dict[a_device.device_name] = output
     q.put(output_dict)
@@ -65,6 +65,7 @@ def main():
 
     while not q.empty():
         my_dict = q.get()
+        #print(my_dict)
         for k,v in my_dict.items():
             print(k)
             print(v)
