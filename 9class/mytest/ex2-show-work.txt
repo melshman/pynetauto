@@ -1,0 +1,190 @@
+
+
+####         AFTER ADDING __init__.py file (EMPTY)          ###########
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import mytest
+
+>>> dir(mytest)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__']
+
+>>> mytest.__package__
+'mytest'
+
+>>> mytest.world.func1()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'mytest' has no attribute 'world'
+
+>>> import mytest.world.func3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'mytest.world.func3'; 'mytest.world' is not a package
+
+>>> import mytest.world
+
+>>> mytest.world.func3()
+This is func3 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>> from mytest.whatever import func2()
+  File "<stdin>", line 1
+    from mytest.whatever import func2()
+                                     ^
+SyntaxError: invalid syntax
+
+>>> from mytest.whatever import func2
+
+>>> func2()
+This is func2 from whatever.py!
+The name of the __name__ variable is mytest.whatever!
+>>>
+
+
+
+####        AFTER ADDING import statements to  __init__.py file         ########
+
+__init__.py
+from mytest.world import func1, func2, func3
+from mytest.whatever import func1, func2, func3
+from mytest.simple import func1, func2, func3
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import mytest
+
+>>> dir(mytest)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'func1', 'func2', 'func3', 'simple', 'whatever', 'world']
+
+>>> func1()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'func1' is not defined
+
+>>> simple.func1()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'simple' is not defined
+
+>>> mytest.simple.func1()
+This is func1 from simple.py!
+The name of the __name__ variable is mytest.simple!
+
+>>> from mytest import simple
+
+>>> func1()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'func1' is not defined
+
+>>> simple.func1()
+This is func1 from simple.py!
+The name of the __name__ variable is mytest.simple!
+
+>>> mytest.simple.func1()
+This is func1 from simple.py!
+The name of the __name__ variable is mytest.simple!
+
+>>> whatever.func2()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'whatever' is not defined
+
+>>> from mytest import whatever
+
+>>> whatever.func2()
+This is func2 from whatever.py!
+The name of the __name__ variable is mytest.whatever!
+
+>>> mytest.world.func3()
+This is func3 from world.py!
+The name of the __name__ variable is mytest.world!
+
+
+
+
+####        AFTER ADDING import statements to  __init__.py file         ########
+
+__init__.py
+from mytest.world import func1, func2, func3
+from mytest.whatever import func1, func2, func3
+from mytest.simple import func1, func2, func3
+
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import mytest
+
+>>> dir(mytest)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'mytest', 'simple', 'whatever', 'world']
+
+>>> world.func2()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'world' is not defined
+
+>>> mytest.world.func2()
+This is func2 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>> from mytest.world import func2
+
+>>> func2()
+This is func2 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>>
+
+
+
+
+####        AFTER UPDATING import statements to  __init__.py file         ########
+
+__init__.py
+from mytest.world import world_func1, world_func2, world_func3
+from mytest.whatever import we_func1, we_func2, we_func3
+from mytest.simple import simple_func1, simple_func2, simple_func3
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> import mytest
+Hello from world.py
+Hello from whatever.py
+Just a simple hello
+
+>>> dir(mytest)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'simple', 'simple_func1', 'simple_func2', 'simple_func3', 'we_func1', 'we_func2', 'we_func3', 'whatever', 'world', 'world_func1', 'world_func2', 'world_func3']
+
+>>> mytest.we_func2()
+This is func2 from whatever.py!
+The name of the __name__ variable is mytest.whatever!
+
+>>> mytest.world_func3()
+This is func3 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>> from mytest import we_func3
+>>> we_func3()
+This is func3 from whatever.py!
+The name of the __name__ variable is mytest.whatever!
+

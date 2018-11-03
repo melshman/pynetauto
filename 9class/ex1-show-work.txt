@@ -1,0 +1,29 @@
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> dir(mytest)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'mytest' is not defined
+
+>>> import mytest
+
+>>> dir(mytest)
+['__doc__', '__loader__', '__name__', '__package__', '__path__', '__spec__']
+>>> import mytest.world
+
+>>> dir(mytest)
+['__doc__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'world']>>> from mytest import whatever
+
+>>> mytest.world.func1()
+This is func1 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>> dir(mytest)
+['__doc__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'whatever', 'world']
+
+>>> whatever.func2()
+This is func2 from whatever.py!
+The name of the __name__ variable is mytest.whatever!

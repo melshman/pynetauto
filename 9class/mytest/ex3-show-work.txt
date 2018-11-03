@@ -1,0 +1,91 @@
+
+####        AFTER ADDING __ALL__ variable to  __init__.py file         ########
+
+__init__.py
+from mytest.world import world_func1, world_func2, world_func3
+from mytest.whatever import we_func1, we_func2, we_func3
+from mytest.simple import simple_func1, simple_func2, simple_func3
+
+
+__all__ = ('world_func1', 'world_func2', 'world_func3')
+
+
+NOTES:  
+- When you import *, mytest doesn't exist; can't run anything but what has been defined in the all variable.  
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> from mytest import *
+Hello from world.py
+Hello from whatever.py
+Just a simple hello
+
+>>> dir(mytest)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'mytest' is not defined
+
+>>> world_func1()
+This is func1 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>> we_func1()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'we_func1' is not defined
+
+>>>
+
+
+
+
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> from mytest import *
+Hello from world.py
+Hello from whatever.py
+Just a simple hello
+
+>>> dir()
+['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'we_func2', 'world_func1', 'world_func2', 'world_func3']
+
+>>> world_func1()
+This is func1 from world.py!
+The name of the __name__ variable is mytest.world!
+
+>>> we_func2()
+This is func2 from whatever.py!
+The name of the __name__ variable is mytest.whatever!
+
+>>> we_func3()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'we_func3' is not defined
+
+>>> from mytest import we_func3
+
+>>> we_func3()
+This is func3 from whatever.py!
+The name of the __name__ variable is mytest.whatever!
+
+>>> dir()
+['__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'we_func2', 'we_func3', 'world_func1', 'world_func2', 'world_func3']
+
+>>> dir(mytest)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'mytest' is not defined
+
+
+
