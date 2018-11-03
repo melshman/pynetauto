@@ -51,22 +51,6 @@ def world_func3():
 	print('The name of the __name__ variable is {}!'.format(__name__))
 
 
-def main():
-	print('\nYou just ran world.py directly as a main script.')
-	print('The name of the __name__ variable is {}!'.format(__name__))
-	
-	my_hello = MyClass("Mr.", "Tim", "Armstrong")
-	my_hello.hello()
-	my_hello.not_hello()
-	# print("This is the directory for {}:\n".format(my_hello, dir()))
-
-	french_hello = FrenchClass("Mrs.", "Juyong", "Armstrong")
-	french_hello.hello()
-
-	doggie_hello = FrenchClass("Mrs.", "Juyong", "Armstrong", "Mando")
-	doggie_hello.hello()
-
-
 class MyClass(object):
 	def __init__(self, sex, first_name, last_name):
 		self.first_name = first_name
@@ -103,6 +87,23 @@ class FrenchClass(MyClass):
 			print("Bonjour! {} {} {}!  How are you today?".format(self.sex, self.first_name, self.last_name))
 		else:
 			print("Doggie Dog Welcome to you, {} {} {}, and your doggie, {}!".format(self.sex, self.first_name, self.last_name, self.dog_name))
+
+
+def main():
+	print('\nYou just ran world.py directly as a main script.')
+	print('The name of the __name__ variable is {}!'.format(__name__))
+	
+	my_hello = MyClass("Mr.", "Tim", "Armstrong")
+	my_hello.hello()
+	my_hello.not_hello()
+	# print("This is the directory for {}:\n".format(my_hello, dir()))
+
+	french_hello = FrenchClass("Mrs.", "Juyong", "Armstrong")
+	french_hello.hello()
+
+	doggie_hello = FrenchClass("Mrs.", "Juyong", "Armstrong", "Mando")
+	doggie_hello.hello()
+
 
 
 if __name__ == "__main__":

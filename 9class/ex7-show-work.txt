@@ -1,0 +1,73 @@
+7. Modify your PYTHONPATH such that the directory containing ./mytest is now on your PYTHONPATH. Verify this in sys.path.
+
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ export PYTHONPATH /home/melshman/projects/pynetauto/9class
+-bash: export: `/home/melshman/projects/pynetauto/9class': not a valid identifier
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ export PYTHONPATH=/home/melshman/projects/pynetauto/9class
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ env | grep PYTH
+PYTHONPATH=/home/melshman/projects/pynetauto/9class
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ cd mytest/temp/
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class/mytest/temp (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sys
+>>> sys.path
+['', '/home/melshman/projects/pynetauto/9class', '/home/melshman/projects/virtualenv/py3-VENV/lib/python36.zip', '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6', '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6/lib-dynload', '/usr/lib/python3.6', '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6/site-packages']
+>>> from pprint import pprint
+>>> sys.path
+['', '/home/melshman/projects/pynetauto/9class', '/home/melshman/projects/virtualenv/py3-VENV/lib/python36.zip', '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6', '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6/lib-dynload', '/usr/lib/python3.6', '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6/site-packages']
+>>> pprint(sys.path)
+['',
+ '/home/melshman/projects/pynetauto/9class',
+ '/home/melshman/projects/virtualenv/py3-VENV/lib/python36.zip',
+ '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6',
+ '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6/lib-dynload',
+ '/usr/lib/python3.6',
+ '/home/melshman/projects/virtualenv/py3-VENV/lib/python3.6/site-packages']
+>>> import mytest
+Hello from world.py
+Hello from whatever.py
+Just a simple hello
+>>> world.func1()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'world' is not defined
+>>> dir(mytest)
+['FrenchClass', 'MyClass', '__all__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__path__', '__spec__', 'simple', 'simple_func1', 'simple_func2', 'simple_func3', 'we_func1', 'we_func2', 'we_func3', 'whatever', 'world', 'world_func1', 'world_func2', 'world_func3']
+>>> pprint(dir(mytest))
+['FrenchClass',
+ 'MyClass',
+ '__all__',
+ '__builtins__',
+ '__cached__',
+ '__doc__',
+ '__file__',
+ '__loader__',
+ '__name__',
+ '__package__',
+ '__path__',
+ '__spec__',
+ 'simple',
+ 'simple_func1',
+ 'simple_func2',
+ 'simple_func3',
+ 'we_func1',
+ 'we_func2',
+ 'we_func3',
+ 'whatever',
+ 'world',
+ 'world_func1',
+ 'world_func2',
+ 'world_func3']
+>>> mytest.world_func1()
+This is func1 from world.py!
+The name of the __name__ variable is mytest.world!
+>>> from mytest import *
+>>> world_func3()
+This is func3 from world.py!
+The name of the __name__ variable is mytest.world!
+>>> quit()
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class/mytest/temp (master)$

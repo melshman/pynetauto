@@ -1,0 +1,40 @@
+
+
+8. Update the __init__.py file and the __all__ variable to include MyClass.
+
+__init__.py
+from mytest.world import world_func1, world_func2, world_func3, MyClass, FrenchClass
+from mytest.whatever import we_func1, we_func2, we_func3
+from mytest.simple import simple_func1, simple_func2, simple_func3
+
+
+__all__ = ('world_func1','world_func2', 'world_func3', 'we_func1', 
+	'we_func2', 'we_func3', 'simple_func1', 'simple_func2', 'simple_func3','MyClass', 'FrenchClass')
+
+
+
+(py3-VENV) melshman@VTMNB17024:~/projects/pynetauto/9class (master)$ python
+Python 3.6.6 (default, Jun 28 2018, 04:42:43)
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+
+>>> from mytest import *
+Hello from world.py
+Hello from whatever.py
+Just a simple hello
+
+>>> dir()
+['FrenchClass', 'MyClass', '__annotations__', '__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'simple_func1', 'simple_func2', 'simple_func3', 'we_func1', 'we_func2', 'we_func3', 'world_func1', 'world_func2', 'world_func3']
+
+>>> french = FrenchClass("mr","tim", "armstrong")
+Dog name is None.
+
+>>> french.hello()
+Bonjour! mr tim armstrong!  How are you today?
+
+>>> frenchdog = FrenchClass("Mrs", "Juyong", "armstrong", "Mando")
+Dog name is Mando.
+
+>>> frenchdog.hello()
+Doggie Dog Welcome to you, Mrs Juyong armstrong, and your doggie, Mando!
+>>>
