@@ -1,4 +1,4 @@
-#!/user/bin/env python
+#!/usr/bin/env python
 
 from __future__ import print_function, unicode_literals
 
@@ -66,21 +66,17 @@ class MyClass(object):
 
 class FrenchClass(MyClass):
 	### modify the main class __init__ function ---- Add statement #####
-	def __init__(self, sex, first_name, last_name):
-		print("Welcome to {} __init__ function!".format(FrenchClass))
-		MyClass.__init__(self, sex, first_name, last_name)
+	# def __init__(self, sex, first_name, last_name):
+	# 	print("Welcome to {} __init__ function!".format(FrenchClass))
+	# 	MyClass.__init__(self, sex, first_name, last_name)
 
 
     ### Alternative Version ---- Add a new variable argument
 	def __init__(self, sex, first_name, last_name, dog_name=None):
-		if not dog_name:
-			MyClass.__init__(self, sex, first_name, last_name)
-			self.dog_name = dog_name
-			print("Dog name is {}.".format(self.dog_name))
-		else:
-			MyClass.__init__(self, sex, first_name, last_name)
-			self.dog_name = dog_name
-			print("Dog name is {}.".format(self.dog_name))
+		MyClass.__init__(self, sex, first_name, last_name)
+		self.dog_name = dog_name
+		print("Dog name is {}.".format(self.dog_name))
+
 
 	def hello(self):
 		if not self.dog_name:
