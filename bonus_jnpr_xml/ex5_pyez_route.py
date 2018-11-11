@@ -66,17 +66,7 @@ def main():
 
 	routes_dict = {}
 
-'''
-10.220.88.39/32
-  nexthop None
-  age 14583289
-  via vlan.0
-  protocol Local
-'''
-
-
 	for item in routes.items():
-		# pprint(item)
 		route = item[0]
 		nexthop = item[1][3]
 		age = item[1][2]
