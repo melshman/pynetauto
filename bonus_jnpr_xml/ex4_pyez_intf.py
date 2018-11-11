@@ -74,8 +74,8 @@ def main():
 	pprint(intfs)
 	print("*******************\n")
 	
-	most_interesting_int = intfs_dict[8].value()
-	print(most_interesting_int)
+	# most_interesting_int = intfs_dict[8].value()
+	# print(most_interesting_int)
 	
 	total_packets = int(intfs_dict['fe-0/0/7']['packets in']) + int(intfs_dict['fe-0/0/7']['packets out'])
 	
