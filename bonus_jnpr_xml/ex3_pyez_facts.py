@@ -23,7 +23,7 @@ and to print out the device's facts.
 
 
 def main():
-pwd = getpass()
+	pwd = getpass()
 
 	srx = {
 		"hostname" : "srx1.twb-tech.com",
@@ -48,6 +48,8 @@ pwd = getpass()
 	reboot_reason = facts['re_info']['default']['0']['last_reboot_reason']
 	
 	pprint("The last time this router was reboot, was {} ago and the cause was {}".format(uptime, reboot_reason))
+
+
 
 if __name__ == "__main__":
 	main()
