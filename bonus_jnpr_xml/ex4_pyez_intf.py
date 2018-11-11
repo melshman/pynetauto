@@ -65,7 +65,7 @@ def main():
 				"packets out" : rx_packets			
 				}
 			})
-
+	print("\n")
 	pprint(intfs_dict)
 
 
