@@ -50,12 +50,12 @@ def main():
 	print("\n")
 
 	cfg = Config(srx_device)
-	cfg.load("set host-name testsrx", format="set", merge=True)
+	cfg.load("set system host-name testsrx", format="set", merge=True)
 	print(cfg.diff())
 	cfg.rollback(0)
 	print("\n")
 
-	cfg.load("set host-name pynet-jnpr-srx1", format="set", merge=True)
+	cfg.load("set system host-name pynet-jnpr-srx1", format="set", merge=True)
 	print(cfg.diff())
 	print("\n")
 	cfg.commit()
