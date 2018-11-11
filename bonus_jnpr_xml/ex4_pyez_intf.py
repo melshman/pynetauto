@@ -8,7 +8,7 @@ from lxml import etree
 
 from jnpr.junos import Device
 from jnpr.junos.op.ethport import EthPortTable
-# from jnpr.junos.op.arp import ArpTable
+from jnpr.junos.op.arp import ArpTable
 # from jnpr.junos.op.phyport import PhyPortTable
 # from jnpr.junos.op.phyport import PhyPortStatsTable
 # from jnpr.junos.utils.config import Config
@@ -41,8 +41,32 @@ def main():
 	print("\nThe updated timeout is {} seconds.".format(srx_device.timeout))
 
 	intfs = EthPortTable(srx_device)
-	pprint(intfs)
+	intfs.get()
 
+	intfs_dict = {}
+
+	for item in intfs.items():
+		intf = item[0]
+		op_state = item[1][0][1]
+		rx_packets = item[1][7][1]
+		tx_packets = item[1][9][1]
+			
+		# intfs_dict.update({
+		# 	"interface" : intf,
+		# 	"operational state" : op_state,
+		# 	"packets in" : rx_packets,
+		# 	"packets out" : rx_packets
+		# 	})
+
+		intfs_dict.update({
+			intf:{
+				"operational state" : op_state,
+				"packets in" : rx_packets,
+				"packets out" : rx_packets			
+				}
+			})
+
+	pprint(intfs_dict)
 
 
 	print("\nJust the intfs ma'am")
