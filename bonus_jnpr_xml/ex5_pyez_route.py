@@ -9,7 +9,7 @@ from lxml import etree
 from jnpr.junos import Device
 # from jnpr.junos.op.ethport import EthPortTable
 # from jnpr.junos.op.arp import ArpTable
-from jnpr.junos.op.arp import RouteTable
+from jnpr.junos.op.routes import RouteTable
 # from jnpr.junos.op.phyport import PhyPortTable
 # from jnpr.junos.op.phyport import PhyPortStatsTable
 # from jnpr.junos.utils.config import Config
