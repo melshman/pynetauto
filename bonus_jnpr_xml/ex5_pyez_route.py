@@ -67,7 +67,7 @@ def main():
 	routes_dict = {}
 
 	for route in routes.items():
-		print(route)
+		pprint(route)
 
 			
 	# 	routes_dict.update({
