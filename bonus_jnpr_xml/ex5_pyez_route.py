@@ -68,19 +68,19 @@ def main():
 
 	for item in routes.items():
 		route = item[0]
-		nexthop = item[1][3]
-		age = item[1][2]
-		via = item[1][1]
-		protocol = item[1][0]
+		nexthop = item[1][3][1]
+		age = item[1][2][1]
+		via = item[1][1][1]
+		protocol = item[1][0][1]
 	
-	routes_dict.update({
-		route: {
-			"nexthop" : nexthop,
-			"age" : age,
-			"via" : via,
-			"protocol" : protocol
-			}
-		})
+		routes_dict.update({
+			route: {
+				"nexthop" : nexthop,
+				"age" : age,
+				"via" : via,
+				"protocol" : protocol
+				}
+			})
 
 	print("\n")
 	pprint(routes_dict)
