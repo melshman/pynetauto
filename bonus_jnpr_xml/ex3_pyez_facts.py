@@ -29,7 +29,7 @@ srx = {
 	"hostname" : "srx1.twb-tech.com",
 	"host" : "184.105.247.76",
 	"username" : "pyclass",
-	"password" : "pwd"
+	"password" : pwd
 }
 
 srx_device = Device(**srx)
