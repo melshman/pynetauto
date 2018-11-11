@@ -73,6 +73,11 @@ def main():
 	print("*******************")
 	pprint(intfs)
 	print("*******************\n")
+
+	pprint(intfs_dict['fe-0/0/7'])
+	print("\n")
+	pprint(intfs_dict['fe-0/0/7']['packets in'])
+	print("\n")
 	
 	# uptime = facts['RE0']['up_time']
 	# reboot_reason = facts['re_info']['default']['0']['last_reboot_reason']
