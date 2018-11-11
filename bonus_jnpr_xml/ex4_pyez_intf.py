@@ -73,10 +73,16 @@ def main():
 	print("*******************")
 	pprint(intfs)
 	print("*******************\n")
-
-	pprint(intfs_dict['fe-0/0/7'])
+	
+	most_interesting_int = intfs_dict[8].value()
+	print(most_interesting_int)
+	
+	total_packets = int(intfs_dict['fe-0/0/7']['packets in']) + int(intfs_dict['fe-0/0/7']['packets out'])
+	
+	print("The most interesting interfaces is definitely this one:\n {}".format(intfs_dict['fe-0/0/7']))
+	print("It has the most moved packets in and out of {} packets!".format(total_packets))
 	print("\n")
-	pprint(intfs_dict['fe-0/0/7']['packets in'])
+	# pprint(intfs_dict['fe-0/0/7']['packets in'])
 	print("\n")
 	
 	# uptime = facts['RE0']['up_time']
