@@ -73,6 +73,14 @@ def main():
 		via = item[1][1][1]
 		protocol = item[1][0][1]
 	
+		print("\n")
+		print("{}\n".format(route))
+		print("nexthop:  {}\n".format(nexthop))
+		print("age:  {}\n".format(age))
+		print("via:  {}\n".format(via))
+		print("protocol:  {}\n".format(protocol))
+		print("\n")
+		
 		routes_dict.update({
 			route: {
 				"nexthop" : nexthop,
