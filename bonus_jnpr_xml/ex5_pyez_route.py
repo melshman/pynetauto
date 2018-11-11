@@ -82,17 +82,8 @@ def main():
 			}
 		})
 
-			
-	# 	routes_dict.update({
-	# 		intf:{
-	# 			"operational state" : op_state,
-	# 			"packets in" : rx_packets,
-	# 			"packets out" : rx_packets			
-	# 			}
-	# 		})
-	
-	# print("\n")
-	# pprint(routes_dict)
+	print("\n")
+	pprint(routes_dict)
 
 
 	print("\nJust the intfs ma'am")
