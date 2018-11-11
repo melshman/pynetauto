@@ -49,7 +49,7 @@ def main():
 	uptime = facts['RE0']['up_time']
 	reboot_reason = facts['re_info']['default']['0']['last_reboot_reason']
 	
-	pprint("\nThe last time this router was reboot, was {} ago and the cause was {}".format(uptime, reboot_reason))
+	print("The last time this router was reboot, was {} ago and the cause was {}.\n".format(uptime, reboot_reason))
 
 
 
