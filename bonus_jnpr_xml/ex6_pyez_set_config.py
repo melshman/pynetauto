@@ -49,7 +49,7 @@ def main():
 	pprint(srx_device.facts)
 	print("\n")
 
-	cfg = Config(a_device)
+	cfg = Config(srx_device)
 	cfg.load("set host-name testsrx", format="set", merge=True)
 	print(cfg.diff())
 	cfg.rollback(0)
