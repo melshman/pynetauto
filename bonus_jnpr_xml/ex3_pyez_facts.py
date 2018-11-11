@@ -33,7 +33,6 @@ def main():
 	}
 
 	srx_device = Device(**srx)
-	srx_device = Device()
 	srx_device.open()
 
 	print("The current timeout is {} seconds.".format(srx_device.timeout))
