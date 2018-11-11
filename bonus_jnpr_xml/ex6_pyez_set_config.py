@@ -53,13 +53,17 @@ def main():
 	cfg.load("set system host-name testsrx", format="set", merge=True)
 	print(cfg.diff())
 	cfg.rollback(0)
-	print("\n")
+	print("\nROLLED BACK... DENIED")
+
+	cfg.load("set system host-name testsrx", format="set", merge=True)
+	print(cfg.diff())
+	cfg.commit()
+	print("\ntestsrx COMMITED")
 
 	cfg.load("set system host-name pynet-jnpr-srx1", format="set", merge=True)
 	print(cfg.diff())
-	print("\n")
 	cfg.commit()
-
+	print("\nBACK TO NORM with pynet-jnpr-srx1")
 
 
 
@@ -89,14 +93,14 @@ def main():
 	# 			}
 	# 		})
 
-	print("\n")
-	pprint(routes_dict)
+	# print("\n")
+	# pprint(routes_dict)
 
 
-	print("\nJust the intfs ma'am")
-	print("*******************")
-	pprint(routes)
-	print("*******************\n")
+	# print("\nJust the intfs ma'am")
+	# print("*******************")
+	# pprint(routes)
+	# print("*******************\n")
 	
 
 if __name__ == "__main__":
