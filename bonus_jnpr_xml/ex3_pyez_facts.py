@@ -35,18 +35,21 @@ def main():
 	srx_device = Device(**srx)
 	srx_device.open()
 
-	print("The current timeout is {} seconds.".format(srx_device.timeout))
+	print("\nThe current timeout is {} seconds.".format(srx_device.timeout))
 	srx_device.timeout = 120
-	print("The updated timeout is {} seconds.".format(srx_device.timeout))
+	print("\nThe updated timeout is {} seconds.".format(srx_device.timeout))
 
 	facts = srx_device.facts
 
+	print("\nJust the facts maam")
+	print("*******************")
 	pprint(facts)
+	print("*******************\n")
 	
 	uptime = facts['RE0']['up_time']
 	reboot_reason = facts['re_info']['default']['0']['last_reboot_reason']
 	
-	pprint("The last time this router was reboot, was {} ago and the cause was {}".format(uptime, reboot_reason))
+	pprint("\nThe last time this router was reboot, was {} ago and the cause was {}".format(uptime, reboot_reason))
 
 
 
