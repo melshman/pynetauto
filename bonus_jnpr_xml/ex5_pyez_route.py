@@ -66,8 +66,31 @@ def main():
 
 	routes_dict = {}
 
-	for route in routes.items():
-		pprint(route)
+'''
+10.220.88.39/32
+  nexthop None
+  age 14583289
+  via vlan.0
+  protocol Local
+'''
+
+
+	for item in routes.items():
+		# pprint(item)
+		route = item[0]
+		nexthop = item[1][3]
+		age = item[1][2]
+		via = item[1][1]
+		protocol = item[1][0]
+	
+	routes_dict.update({
+		route: {
+			"nexthop" : nexthop,
+			"age" : age,
+			"via" : via,
+			"protocol" : protocol
+			}
+		})
 
 			
 	# 	routes_dict.update({
