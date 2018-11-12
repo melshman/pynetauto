@@ -49,7 +49,9 @@ def main():
 	show_version = srx_device.rpc.get_software_information
 	pprint(show_version)
 	print("\n")
-	print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
+	# print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
+	print(etree.tostring(show_version, encoding='unicode', pretty_print=True).decode().rstrip())
+	
 
 
 if __name__ == "__main__":
