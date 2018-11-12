@@ -50,7 +50,7 @@ def main():
 	pprint(show_version)
 	print("\n")
 	# print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
-	print(etree.tostring(show_version, encoding='unicode', pretty_print=True).decode().rstrip())
+	print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
 
 
 
