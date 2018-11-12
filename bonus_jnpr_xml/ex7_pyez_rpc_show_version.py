@@ -12,7 +12,7 @@ from jnpr.junos import Device
 # from jnpr.junos.op.routes import RouteTable
 # from jnpr.junos.op.phyport import PhyPortTable
 # from jnpr.junos.op.phyport import PhyPortStatsTable
-from jnpr.junos.utils.config import Config
+# from jnpr.junos.utils.config import Config
 
 '''
 
@@ -29,29 +29,31 @@ get-software-information
 
 
 def main():
-	pwd = getpass()
+pwd = getpass()
 
-	srx = {
-		"hostname" : "srx1.twb-tech.com",
-		"host" : "184.105.247.76",
-		"user" : "pyclass",
-		"password" : pwd
-	}
+srx = {
+	"hostname" : "srx1.twb-tech.com",
+	"host" : "184.105.247.76",
+	"user" : "pyclass",
+	"password" : pwd
+}
 
-	srx_device = Device(**srx)
-	srx_device.open()
+srx_device = Device(**srx)
+srx_device.open()
 
-	print("\nThe current timeout is {} seconds.".format(srx_device.timeout))
-	srx_device.timeout = 120
-	print("\nThe updated timeout is {} seconds.".format(srx_device.timeout))
+print("\nThe current timeout is {} seconds.".format(srx_device.timeout))
+srx_device.timeout = 120
+print("\nThe updated timeout is {} seconds.".format(srx_device.timeout))
 
-	print("\n")
-	show_version = srx_device.rpc.get_software_information()
-	pprint(show_version)
-	print("\n")
-	# print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
-	print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
+print("\n")
+show_version = srx_device.rpc.get_software_information()
+pprint(show_version)
+print("\n")
+# print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
+print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
 
+version = show_version.getchildren()[4][1].text
+print("\nThe version of the router is {}".format(version))
 
 
 if __name__ == "__main__":
