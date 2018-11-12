@@ -69,40 +69,6 @@ def main():
 
 
 
-	# for item in routes.items():
-	# 	route = item[0]
-	# 	nexthop = item[1][3][1]
-	# 	age = item[1][2][1]
-	# 	via = item[1][1][1]
-	# 	protocol = item[1][0][1]
-	
-	# 	print("\n")
-	# 	print("{}\n".format(route))
-	# 	print("nexthop:  {}\n".format(nexthop))
-	# 	print("age:  {}\n".format(age))
-	# 	print("via:  {}\n".format(via))
-	# 	print("protocol:  {}\n".format(protocol))
-	# 	print("\n")
-		
-	# 	routes_dict.update({
-	# 		route: {
-	# 			"nexthop" : nexthop,
-	# 			"age" : age,
-	# 			"via" : via,
-	# 			"protocol" : protocol
-	# 			}
-	# 		})
-
-	# print("\n")
-	# pprint(routes_dict)
-
-
-	# print("\nJust the intfs ma'am")
-	# print("*******************")
-	# pprint(routes)
-	# print("*******************\n")
-	
-
 if __name__ == "__main__":
 	main()
 

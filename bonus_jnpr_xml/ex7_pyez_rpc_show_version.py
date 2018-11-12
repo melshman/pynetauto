@@ -23,6 +23,8 @@ Print out this returned XML as a string using 'etree.tostring()'.
 Parse the returned XML to retrieve the model from the device. 
 Print this model number to the screen.
 
+get-software-information
+
 '''
 
 
@@ -44,28 +46,10 @@ def main():
 	print("\nThe updated timeout is {} seconds.".format(srx_device.timeout))
 
 	print("\n")
-	pprint(srx_device.facts)
+	show_version = srx_device.rpc.get_software_information
+	pprint(show_version)
 	print("\n")
-
-	cfg = Config(srx_device)
-	cfg.load("set system host-name testsrx", format="set", merge=True)
-	print(cfg.diff())
-	cfg.rollback(0)
-	print("\nROLLED BACK... DENIED")
-
-	cfg.load("set system host-name testsrx", format="set", merge=True)
-	print(cfg.diff())
-	cfg.commit()
-	print("\ntestsrx COMMITED")
-
-	cfg.load("set system host-name pynet-jnpr-srx1", format="set", merge=True)
-	print(cfg.diff())
-	cfg.commit()
-	print("\nBACK TO NORM with pynet-jnpr-srx1")
-
-
-
-
+	print(etree.tostring(show_version, encoding='unicode', pretty_print=True))
 
 
 if __name__ == "__main__":
