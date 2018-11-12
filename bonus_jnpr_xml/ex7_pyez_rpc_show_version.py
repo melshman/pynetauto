@@ -54,6 +54,7 @@ def main():
 
 	version = show_version.getchildren()[4][1].text
 	print("\nThe version of the router is {}".format(version))
+	print("\n")
 
 
 if __name__ == "__main__":
