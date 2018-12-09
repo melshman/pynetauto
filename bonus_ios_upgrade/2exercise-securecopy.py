@@ -24,7 +24,15 @@ Optional Bonus: Use threads so this transfer happens on all four switches concur
 def main():
 	password = getpass()
 
-	cisco = { 
+	VTswitch = { 
+	    'device_type': 'cisco_ios',
+	    'host': '192.168.2.101',
+	    'username': 'admin',
+	    'password': password,
+	    'file_system': 'flash:'
+	    }
+
+	switch07 = { 
 	    'device_type': 'cisco_ios',
 	    'host': '192.168.2.7',
 	    'username': 'admin',
@@ -32,12 +40,49 @@ def main():
 	    'file_system': 'flash:'
 	    }
 
+	Arista1 = { 
+	    'device_type': 'eos',
+	    'host': '184.105.247.72',
+	    'username': 'pyclass',
+	    'password': password,
+	    'file_system': '/mnt/flash'
+	    }
+
+	Arista2 = { 
+	    'device_type': 'eos',
+	    'host': '184.105.247.73',
+	    'username': 'pyclass',
+	    'password': password,
+	    'file_system': '/mnt/flash'
+	    }
+
+	Arista3 = { 
+	    'device_type': 'eos',
+	    'host': '184.105.247.74',
+	    'username': 'pyclass',
+	    'password': password,
+	    'file_system': '/mnt/flash'
+	    }
+
+	Arista4 = { 
+	    'device_type': 'eos',
+	    'host': '184.105.247.75',
+	    'username': 'pyclass',
+	    'password': password,
+	    'file_system': '/mnt/flash'
+	    }
+
 	source_file = 'my_file1.txt'
 	dest_file = 'transfered_file.txt'
 	direction = 'put'
 
 	# can add additional devices ; need ',' when tuple is only one value
-	for net_device in (cisco, ):
+	# use this for statement for local lab switches
+	for net_device in (VTswitch, switch07):
+		
+	# use for pynet AWS lab environment	
+	# for net_device in (Arista1, Arista2, Arista3, Arista4):
+
 	    # have to pop so that the remaining dict will satisfy Netmiko ConnectHandler
 	    file_system = net_device.pop('file_system')  
 

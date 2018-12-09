@@ -28,21 +28,22 @@ using getpass() to the device dictionary inside of your Python program.
 def main():
 	password = getpass()
 
-	# cisco = { 
-	#     'device_type': 'cisco_ios',
-	#     'host': '192.168.2.7',
-	#     'username': 'admin',
-	#     'password': password,
-	#     'file_system': 'flash:'
-	#     }
 
 	net_devices = []
 
+	# USE FOR PYNET AWS LAB
 	with open("net_devices.yaml", 'r') as f:
 		try:
 			net_devices = yaml.load(f)
 		except yaml.YAMLError as exc:
 			print(exc)
+
+	## USE FOR LOCAL LAB USE
+	# with open("local_net_devices.yaml", 'r') as f:
+	# 	try:
+	# 		net_devices = yaml.load(f)
+	# 	except yaml.YAMLError as exc:
+	# 		print(exc)
 
 	pprint(net_devices)
 	pprint(type(net_devices))
@@ -60,6 +61,7 @@ def main():
 	    # pprint(net_device)
 	    # pprint(type(net_device))
 	    # pprint(net_device['password'])
+
 
 	    # Create the Netmiko SSH connection
 		ssh_conn = ConnectHandler(**net_device)

@@ -1,12 +1,25 @@
 ---
 
-- 'device_type': 'cisco_ios'
-  'host': '192.168.2.7'
-  'username': 'admin'
+- 'device_type': 'eos'
+  'host': '184.105.247.72'
+  'username': 'pyclass'
   'password': password
-  'file_system': 'flash'
-- 'device_type': 'cisco_ios'
-  'host': '192.168.2.101'
-  'username': 'admin'
+  'file_system': '/mnt/flash'
+
+- 'device_type': 'eos'
+  'host': '184.105.247.73'
+  'username': 'plyclass'
   'password': password
-  'file_system': 'flash'
+  'file_system': '/mnt/flash'
+
+- 'device_type': 'eos'
+  'host': '184.105.247.74'
+  'username': 'pyclass'
+  'password': password
+  'file_system': '/mnt/flash'
+
+- 'device_type': 'eos'
+  'host': '184.105.247.75'
+  'username': 'pyclass'
+  'password': password
+  'file_system': '/mnt/flash'
