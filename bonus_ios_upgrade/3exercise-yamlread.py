@@ -50,7 +50,7 @@ def main():
 	# pprint(type(net_devices))
 
 
-	source_file = 'my_file2.txt'
+	source_file = 'my_file3.txt'
 	dest_file = 'transfered_file.txt'
 	direction = 'put'
 
