@@ -41,7 +41,7 @@ def main():
 	    }
 
 	Arista1 = { 
-	    'device_type': 'eos',
+	    'device_type': 'arista_eos',
 	    'host': '184.105.247.72',
 	    'username': 'pyclass',
 	    'password': password,
@@ -49,7 +49,7 @@ def main():
 	    }
 
 	Arista2 = { 
-	    'device_type': 'eos',
+	    'device_type': 'arista_eos',
 	    'host': '184.105.247.73',
 	    'username': 'pyclass',
 	    'password': password,
@@ -57,7 +57,7 @@ def main():
 	    }
 
 	Arista3 = { 
-	    'device_type': 'eos',
+	    'device_type': 'arista_eos',
 	    'host': '184.105.247.74',
 	    'username': 'pyclass',
 	    'password': password,
@@ -65,7 +65,7 @@ def main():
 	    }
 
 	Arista4 = { 
-	    'device_type': 'eos',
+	    'device_type': 'arista_eos',
 	    'host': '184.105.247.75',
 	    'username': 'pyclass',
 	    'password': password,

@@ -1,24 +1,24 @@
 ---
 
-- 'device_type': 'eos'
+- 'device_type': 'arista_eos'
   'host': '184.105.247.72'
   'username': 'pyclass'
   'password': password
   'file_system': '/mnt/flash'
 
-- 'device_type': 'eos'
+- 'device_type': 'arista_eos'
   'host': '184.105.247.73'
   'username': 'plyclass'
   'password': password
   'file_system': '/mnt/flash'
 
-- 'device_type': 'eos'
+- 'device_type': 'arista_eos'
   'host': '184.105.247.74'
   'username': 'pyclass'
   'password': password
   'file_system': '/mnt/flash'
 
-- 'device_type': 'eos'
+- 'device_type': 'arista_eos'
   'host': '184.105.247.75'
   'username': 'pyclass'
   'password': password
