@@ -80,7 +80,7 @@ def main():
 		else:
 			print("The MDF could not be verfied.  The file transfer was NOT successful!  Please try again")
 
-		pause = input("Hit enter to continue: ")
+		# pause = input("Hit enter to continue: ")
 
 if __name__ == '__main__':
 	main()
