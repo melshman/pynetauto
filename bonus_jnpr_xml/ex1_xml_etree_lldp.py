@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import unicode_literals, print_function
+
 from getpass import getpass
 from pprint import pprint
 
@@ -49,11 +51,13 @@ def main():
 	with open('show_lldp.xml') as f:
 		lldp = etree.fromstring(f.read())
 
-	# print(etree.tostring(lldp, encoding='unicode', pretty_print=True).decode().rstrip())
-	# print(etree.tostring(lldp, encoding='unicode', pretty_print=True).decode())
+	print("\nPrint XML Tree out as a string:")
+	print("-" * 20)
 	print(etree.tostring(lldp, encoding='unicode', pretty_print=True))
 
 	# pprint(lldp.getchildren())
+	print('\n\n')
+	print("Print one child element of the root element:")
 	lldp_child = lldp.getchildren()[0]
 	print(lldp_child.tag)
 
