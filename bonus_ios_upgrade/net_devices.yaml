@@ -8,7 +8,7 @@
 
 - 'device_type': 'arista_eos'
   'host': '184.105.247.73'
-  'username': 'plyclass'
+  'username': 'pyclass'
   'password': password
   'file_system': '/mnt/flash'
 
