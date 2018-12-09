@@ -28,7 +28,6 @@ using getpass() to the device dictionary inside of your Python program.
 def main():
 	password = getpass()
 
-
 	net_devices = []
 
 	# USE FOR PYNET AWS LAB
@@ -45,8 +44,11 @@ def main():
 	# 	except yaml.YAMLError as exc:
 	# 		print(exc)
 
-	pprint(net_devices)
-	pprint(type(net_devices))
+
+	## THSOOT
+	# pprint(net_devices)
+	# pprint(type(net_devices))
+
 
 	source_file = 'my_file2.txt'
 	dest_file = 'transfered_file.txt'
@@ -71,14 +73,14 @@ def main():
 	                                  file_system=file_system, 
 	                                  direction=direction,
 	                                  overwrite_file=True)
-		pprint(transfer_dict)
-		pause = input("Hit enter to continue: ")
+		print("Transfer_dict for {}:  {}".format(net_device['host'],transfer_dict))
 
 		if transfer_dict['file_verified']==True:
 			print("The MDF has been verfied.  The file transfer was successful!")
 		else:
 			print("The MDF could not be verfied.  The file transfer was NOT successful!  Please try again")
 
+		pause = input("Hit enter to continue: ")
 
 if __name__ == '__main__':
 	main()
