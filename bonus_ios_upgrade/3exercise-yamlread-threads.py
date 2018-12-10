@@ -31,7 +31,11 @@ using getpass() to the device dictionary inside of your Python program.
 
 def transfer_file(a_device):
     
-	file_system = a_device.pop('file_system')  
+	source_file = 'my_file4.txt'
+	dest_file = 'transfered_file4.txt'
+	direction = 'put'
+
+  	file_system = a_device.pop('file_system')  
 
 	# Create the Netmiko SSH connection
 	ssh_conn = ConnectHandler(**a_device)
@@ -51,6 +55,7 @@ def transfer_file(a_device):
 	# pause = input("Hit enter to continue: ")
 
 def main():
+
 	password = getpass()
 
 	start_time = datetime.now()
@@ -73,11 +78,6 @@ def main():
 	## THSOOT
 	# pprint(net_devices)
 	# pprint(type(net_devices))
-
-
-	source_file = 'my_file4.txt'
-	dest_file = 'transfered_file4.txt'
-	direction = 'put'
 
 
 	for a_device in net_devices:
