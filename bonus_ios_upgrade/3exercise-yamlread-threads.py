@@ -31,9 +31,9 @@ using getpass() to the device dictionary inside of your Python program.
 
 def transfer_file(a_device):
     
-    file_system = a_device.pop('file_system')  
+	file_system = a_device.pop('file_system')  
 
-    # Create the Netmiko SSH connection
+	# Create the Netmiko SSH connection
 	ssh_conn = ConnectHandler(**a_device)
 	transfer_dict = file_transfer(ssh_conn,
                                   source_file=source_file, 
@@ -80,20 +80,20 @@ def main():
 	direction = 'put'
 
 
-    for a_device in net_devices:
-        a_device['password'] = password
-        my_thread = threading.Thread(target=transfer_file, args=(a_device,))
-        my_thread.start()
-    
-    main_thread = threading.currentThread()
-    for a_thread in threading.enumerate():
-        if a_thread != main_thread:
-            print(a_thread)
-            a_thread.join()
+	for a_device in net_devices:
+		a_device['password'] = password
+		my_thread = threading.Thread(target=transfer_file, args=(a_device,))
+		my_thread.start()
+
+	main_thread = threading.currentThread()
+	for a_thread in threading.enumerate():
+		if a_thread != main_thread:
+			print(a_thread)
+			a_thread.join()
 
 
-    elapsed_time = datetime.now() - start_time
-    print("Elapsed time: {}".format(elapsed_time))
+	elapsed_time = datetime.now() - start_time
+	print("Elapsed time: {}".format(elapsed_time))
 
 
 
