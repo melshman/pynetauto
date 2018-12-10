@@ -97,6 +97,12 @@ def main():
 		lldp = device.get_lldp_neighbors()
 		print("\n{}\n".format(lldp))
 
+		for key in lldp.keys():
+			local_int = lldp[key]
+			remote_device = lldp[key][0]['hostname']
+			remote_port = lldp[key][0]['port']
+			print("local interface {} has a neighbor {} connected on remote port {}".format(local_int, remote_device, remote_port))
+
 	# 	for key in lldp.keys():
 	# 		neighbor_list.append(lldp[key][0]['hostname'])
 	# 		port_list.append(lldp[key][0]['port'])
