@@ -30,12 +30,12 @@ using getpass() to the device dictionary inside of your Python program.
 """
 
 def transfer_file(a_device):
-    
+
 	source_file = 'my_file4.txt'
 	dest_file = 'transfered_file4.txt'
 	direction = 'put'
 
-  	file_system = a_device.pop('file_system')  
+	file_system = a_device.pop('file_system')  
 
 	# Create the Netmiko SSH connection
 	ssh_conn = ConnectHandler(**a_device)
