@@ -48,9 +48,9 @@ def transfer_file(a_device):
 	print("Transfer_dict for {}:  {}".format(a_device['host'],transfer_dict))
 
 	if transfer_dict['file_verified']==True:
-		print("The MDF has been verfied.  The file transfer was successful!")
+		print("The MD5 Hash has been verfied.  The file transfer was successful!")
 	else:
-		print("The MDF could not be verfied.  The file transfer was NOT successful!  Please try again")
+		print("The MD5 Hash could not be verfied.  The file transfer was NOT successful!  Please try again")
 
 	# pause = input("Hit enter to continue: ")
 
