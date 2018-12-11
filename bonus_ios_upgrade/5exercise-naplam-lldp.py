@@ -11,6 +11,11 @@ from napalm import get_network_driver
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
+
+import email_helper
+import smtplib
+from email.mime.text import MIMEText
+
 """
 
 
@@ -24,6 +29,29 @@ Email this local interface, remote switch name, and remote port name to yourself
 using the send_mail function from earlier in the course.
 
 """
+
+def send_mail(recipient, subject, message, sender):
+    '''
+    Simple function to help simplify sending SMTP email
+
+    Assumes a mailserver is available on localhost
+    '''
+
+    message = MIMEText(message)
+    message['Subject'] = subject
+    message['From'] = sender
+    message['To'] = recipient
+
+    # Create SMTP connection object to localhost
+    smtp_conn = smtplib.SMTP('localhost')
+
+    # Send the email
+    smtp_conn.sendmail(sender, recipient, message.as_string())
+
+    # Close SMTP connection
+    smtp_conn.quit()
+    return True
+
 
 def main():
 	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -110,6 +138,28 @@ def main():
 	# 	print("\n")
 	# print("\nThe neighbors are:  {}".format(neighbor_list))
 	# print("\nThe ports are:  {}".format(port_list))
+
+
+
+		### EMAIL CODE ###
+
+		recipient = 'melshman@gmail.com'
+		subject = 'Test message'
+		message = '''
+
+		This is a fictional test message.
+
+
+		Regards,
+
+		Tim
+
+		'''
+
+		sender = 'tim.armstrong@vt-group.com'
+		email_helper.send_mail(recipient, subject, message, sender)
+
+
 
 if __name__ == "__main__":
 	main()
