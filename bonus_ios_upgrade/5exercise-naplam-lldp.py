@@ -98,7 +98,7 @@ def main():
 		print("\n{}\n".format(lldp))
 
 		for key in lldp.keys():
-			local_int = lldp[key]
+			local_int = key
 			remote_device = lldp[key][0]['hostname']
 			remote_port = lldp[key][0]['port']
 			print("local interface {} has a neighbor {} connected on remote port {}".format(local_int, remote_device, remote_port))
