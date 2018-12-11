@@ -147,18 +147,19 @@ def main():
 		subject = 'Test message'
 		message = '''
 
-		This is a fictional test message.
-
+		local interface {} has a neighbor {} connected on remote port {}
 
 		Regards,
 
 		Tim
 
-		'''
+		'''.format(local_int, remote_device, remote_port)
+
 
 		sender = 'tim.armstrong@vt-group.com'
 		email_helper.send_mail(recipient, subject, message, sender)
 
+		print("email has been sent with the following message:  {}".format(message))
 
 
 if __name__ == "__main__":
