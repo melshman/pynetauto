@@ -31,18 +31,18 @@ def main():
 	net_devices = []
 
 	# USE FOR PYNET AWS LAB
-	with open("net_devices.yaml", 'r') as f:
-		try:
-			net_devices = yaml.load(f)
-		except yaml.YAMLError as exc:
-			print(exc)
-
-	## USE FOR LOCAL LAB USE
-	# with open("local_net_devices.yaml", 'r') as f:
+	# with open("net_devices.yaml", 'r') as f:
 	# 	try:
 	# 		net_devices = yaml.load(f)
 	# 	except yaml.YAMLError as exc:
 	# 		print(exc)
+
+	## USE FOR LOCAL LAB USE
+	with open("local_net_devices.yaml", 'r') as f:
+		try:
+			net_devices = yaml.load(f)
+		except yaml.YAMLError as exc:
+			print(exc)
 
 
 	## THSOOT

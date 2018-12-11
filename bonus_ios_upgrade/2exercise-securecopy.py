@@ -78,10 +78,10 @@ def main():
 
 	# can add additional devices ; need ',' when tuple is only one value
 	# use this for statement for local lab switches
-	# for net_device in (VTswitch, switch07):
+	for net_device in (VTswitch, switch07):
 		
 	# use for pynet AWS lab environment	
-	for net_device in (Arista1, Arista2, Arista3, Arista4):
+	# for net_device in (Arista1, Arista2, Arista3, Arista4):
 
 	    # have to pop so that the remaining dict will satisfy Netmiko ConnectHandler
 	    file_system = net_device.pop('file_system')  
@@ -98,9 +98,9 @@ def main():
 	    pause = input("Hit enter to continue: ")
 
 	    if transfer_dict['file_verified']==True:
-	    	print("The MDF has been verfied.  The file transfer was successful!")
+	    	print("The MD5 has been verfied.  The file transfer was successful!")
 	    else:
-	    	print("The MDF could not be verfied.  The file transfer was NOT successful!  Please try again")
+	    	print("The MD5 could not be verfied.  The file transfer was NOT successful!  Please try again")
 
 
 if __name__ == '__main__':
