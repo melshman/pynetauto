@@ -58,6 +58,7 @@ def main():
 
 		net_device['password'] = password
 		file_system = net_device.pop('file_system')  
+		pprint(net_device)
 
 	    #TSHOOT
 	    # pprint(net_device)

@@ -3,11 +3,11 @@
 - 'device_type': 'cisco_ios'
   'host': '192.168.2.7'
   'username': 'admin'
-  'password': password
+  'password': ''
   'file_system': 'flash'
 
 - 'device_type': 'cisco_ios'
   'host': '192.168.2.101'
   'username': 'admin'
-  'password': password
+  'password': ''
   'file_system': 'flash'
